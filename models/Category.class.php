@@ -29,7 +29,7 @@ class Category
 	// SETTER------------------------------------------------------------------
 	public function setName($name)
 	{
-		if (strlen($name) > 63)
+		if (strlen($name) > 31)
 		{
 			return "Contenu trop long)";
 		}
