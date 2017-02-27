@@ -14,9 +14,10 @@
 				<li class="active"><a href="index.php?page=categories">Les catégories</a></li>
 				<li><a href="index.php?page=create_category">Nouvelle catégorie</a></li>
 				<li><a href="index.php?page=create_product">Nouveau produit</a></li>
-				<li><a href="index.php?page=user">Profil</a></li>
-				<li><a href="index.php?page=logout">Logout</a></li>
+				<li><a href="index.php?page=user">Mon profil</a></li>
+				<li><a href="index.php?page=logout">Se déconnecter</a></li>
 			</ul>
 		</div>
+		<p>Bonjour <strong><?=htmlentities($_SESSION['email'])?></strong>, vous êtes maintenant connecté(e) en tant qu'<strong>admin</strong> !</p>
 	</div>
 </nav>
