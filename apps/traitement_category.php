@@ -1,5 +1,5 @@
 <?php
-// var_dump($_POST);
+var_dump($_POST);
 if (isset($_POST['name'], $_POST['description']))
 {
 	// Etape 2
