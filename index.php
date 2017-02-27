@@ -14,18 +14,18 @@ require('models/User.class.php');
 require('models/Category.class.php');
 require('models/Comment.class.php');
 require('models/Products.class.php');
-require('models/Orders.class.php');
+// require('models/Orders.class.php');
 
 require('models/UserManager.class.php');
 require('models/CategoryManager.class.php');
 require('models/CommentManager.class.php');
 require('models/ProductsManager.class.php');
-require('models/OrdersManager.class.php');
+// require('models/OrdersManager.class.php');
 
 require('apps/traitement_category.php');
 require('apps/traitement_users.php');
 require('apps/traitement_comments.php');
-// require('apps/traitement_Products.php');
+require('apps/traitement_Products.php');
 // require('apps/traitement_orders.php');
 require('apps/skel.php');
 ?>

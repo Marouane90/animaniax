@@ -25,11 +25,11 @@ class UserManager
 		$user = mysqli_fetch_object($res, "User"); // $user = new User();
 		return $user;
 	}
-	// on en a besoin pour la partie login du site internet:
-	public function findByLogin($login) //existe aussi en findByEmail (function findBy())
+	
+	public function findByEmail($email) 
 	{
-		$login=mysqli_real_escape_string($this->db, $login); // /!\ hyper important pour la sécurité, ne pas l'oublier /!\
-		$res = mysqli_query($this->db, "SELECT * FROM users WHERE login='".$login."' LIMIT 1");
+		$email=mysqli_real_escape_string($this->db, $email); // /!\ hyper important pour la sécurité, ne pas l'oublier /!\
+		$res = mysqli_query($this->db, "SELECT * FROM users WHERE email='".$email."' LIMIT 1");
 		$user = mysqli_fetch_object($res, "User"); // $user = new User();
 		return $user;
 	}
