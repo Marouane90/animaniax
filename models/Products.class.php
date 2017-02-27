@@ -76,9 +76,13 @@ class Products
 		{
 			return "L'url de l'image est trop court (<3)"
 		}
-		if (strlen($picture)>511)
+		else if (strlen($picture)>511)
 		{
 			return "L'url de l'image est trop long (>511)"
+		}
+		else
+		{
+			$this->picture = $picture;
 		}
 	}
 	public function setDescription($description)
@@ -87,9 +91,13 @@ class Products
 		{
 			return "L'url de l'image est trop court (<3)"
 		}
-		if (strlen($description)>1023)
+		else if (strlen($description)>1023)
 		{
 			return "L'url de l'image est trop long (>1023)"
+		}
+		else 
+		{
+			$this->description = $description;
 		}
 	}
 	public function setPrice($price)
@@ -98,9 +106,13 @@ class Products
 		{
 			return "Le prix ne peut pas etre inférieur à 0"
 		}
-		if ($price => 10 000)
+		else if ($price => 10 000)
 		{
 			return "Le prix est trop elevé"
+		}
+		else
+		{
+			$this->price = $price;
 		}
 	}
 	public function setQuantity($quantity)
@@ -108,6 +120,10 @@ class Products
 		if ($quantity) <= 0)
 		{
 			return "Les quantités ne peuvent pas être négatives"
+		}
+		else
+		{
+			$this->quantity = $quantity;
 		}
 	}
 
