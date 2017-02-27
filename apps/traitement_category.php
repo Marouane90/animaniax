@@ -1,5 +1,5 @@
 <?php
-// var_dump($_POST);
+var_dump($_POST);
 if (isset($_POST['name'], $_POST['description']))
 {
 	// Etape 2
@@ -12,7 +12,7 @@ if (isset($_POST['name'], $_POST['description']))
 		if ($category)
 		{
 			// Etape 4
-			header('Location: index.php?page=categories';
+			header('Location: index.php?page=categories');
 			exit;
 		}
 		else
