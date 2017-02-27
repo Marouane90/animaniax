@@ -25,7 +25,7 @@ require('models/OrdersManager.class.php');
 require('apps/traitement_category.php');
 require('apps/traitement_users.php');
 require('apps/traitement_comments.php');
-require('apps/traitement_products.php');
-require('apps/traitement_orders.php');
+// require('apps/traitement_Products.php');
+// require('apps/traitement_orders.php');
 require('apps/skel.php');
 ?>
