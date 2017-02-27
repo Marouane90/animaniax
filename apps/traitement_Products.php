@@ -1,14 +1,14 @@
 <?php
 if(isset($_POST['id_category'], $_POST['name'], $_POST['picture'], $_POST['description'], $_POST['price'], $_POST['quantity'],$_SESSION['id']))
 {
-	$products = new ProductsManager($db);
-	$productsManager = new ProductsManager($db);
-	$category = $productsManager->findById($_SESSION['id']);
+	$manager = new ProductsManager($db);
+	$categoryManager = new CategoryManager($db);
+	$category = $categoryManager->findById($_POST['id_category']);
 	
 
 try 
 	{
-		$article = $manager->create($_POST['id_category'], $_POST['name'], $_POST['picture'], $_POST['description'], $_POST['price'], $_POST['quanrtity'],$category);
+		$article = $manager->create($category, $_POST['name'], $_POST['picture'], $_POST['description'], $_POST['price'], $_POST['quanrtity']);
 		if ($article)
 		{
 			header('Location: index.php?page=products');
