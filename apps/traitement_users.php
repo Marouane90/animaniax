@@ -49,7 +49,7 @@ if (isset($_POST["action"]))
 			$manager = new UserManager($db);
 			try
 			{
-				$user = $manager->findByLogin($_POST['email']);
+				$user = $manager->findByEmail($_POST['email']);
 				if ($user)
 				{
 					if (password_verify($_POST['password'], $user->getPassword()))
