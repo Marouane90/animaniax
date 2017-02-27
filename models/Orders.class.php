@@ -6,8 +6,6 @@ class Orders
 	private $date;
 	private $status;
 	private $price;
-
-	private $id_users;
 	private $db;
 
 	public function __construct($db)
@@ -68,11 +66,11 @@ class Orders
 	{
 		if ($price <= 0)
 		{
-			return "Le prix ne peut pas être inférieur à 0"
+			return "Le prix ne peut pas être inférieur à 0";
 		}
 		if ($price >= 10000 )
 		{
-			return "Le prix ne peut pas être supérieur à 10000"
+			return "Le prix ne peut pas être supérieur à 10000";
 		}
 	}
 }
