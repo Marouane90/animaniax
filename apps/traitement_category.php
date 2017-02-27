@@ -12,7 +12,7 @@ if (isset($_POST['name'], $_POST['description']))
 		if ($category)
 		{
 			// Etape 4
-			header('Location: index.php?page=categories';
+			header('Location: index.php?page=categories');
 			exit;
 		}
 		else
