@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Lun 27 Février 2017 à 09:56
+-- Généré le: Lun 27 Février 2017 à 10:08
 -- Version du serveur: 5.5.53-0ubuntu0.14.04.1
 -- Version de PHP: 5.5.9-1ubuntu4.20
 
@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `comments` (
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `id_author` int(10) unsigned NOT NULL,
   `id_product` int(10) unsigned NOT NULL,
-  `rate` int(10) NOT NULL,
+  `rate` tinyint(4) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_author` (`id_author`),
   KEY `id_product` (`id_product`)
@@ -72,9 +72,9 @@ CREATE TABLE IF NOT EXISTS `link_orders_products` (
 
 CREATE TABLE IF NOT EXISTS `orders` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `id_users` int(31) unsigned NOT NULL,
-  `status` int(63) NOT NULL,
-  `price` varchar(31) NOT NULL,
+  `id_users` int(10) unsigned NOT NULL,
+  `status` varchar(63) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `price` float NOT NULL,
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `id_users` (`id_users`)
@@ -88,12 +88,12 @@ CREATE TABLE IF NOT EXISTS `orders` (
 
 CREATE TABLE IF NOT EXISTS `products` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `id_category` int(31) unsigned NOT NULL,
+  `id_category` int(10) unsigned NOT NULL,
   `name` varchar(63) NOT NULL,
   `picture` varchar(511) CHARACTER SET utf8 NOT NULL,
   `description` varchar(1023) NOT NULL,
-  `price` varchar(31) NOT NULL,
-  `quantity` int(15) NOT NULL,
+  `price` float NOT NULL,
+  `quantity` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `id_category` (`id_category`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
@@ -125,8 +125,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Contraintes pour la table `comments`
 --
 ALTER TABLE `comments`
-  ADD CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`id_product`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`id_author`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`id_author`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`id_product`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `link_orders_products`
