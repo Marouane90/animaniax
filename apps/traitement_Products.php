@@ -1,26 +1,33 @@
 <?php
-if(isset($_POST['id_category'], $_POST['name'], $_POST['picture'], $_POST['description'], $_POST['price'], $_POST['quantity'],$_SESSION['id']))
+if (isset($_POST["action"]))
 {
-	$manager = new ProductsManager($db);
-	$categoryManager = new CategoryManager($db);
-	$category = $categoryManager->findById($_POST['id_category']);
-	
-
-try 
+	$action = $_POST["action"];
+	if ($action == "create_product")
 	{
-		$article = $manager->create($category, $_POST['name'], $_POST['picture'], $_POST['description'], $_POST['price'], $_POST['quanrtity']);
-		if ($article)
+		if(isset($_POST['id_category'], $_POST['name'], $_POST['picture'], $_POST['description'], $_POST['price'], $_POST['quantity'],$_SESSION['id']))
 		{
-			header('Location: index.php?page=products');
-			exit;
+			$manager = new ProductsManager($db);
+			$categoryManager = new CategoryManager($db);
+			$category = $categoryManager->findById($_POST['id_category']);
+			
+
+		try 
+			{
+				$products = $manager->create($category, $_POST['name'], $_POST['picture'], $_POST['description'], $_POST['price'], $_POST['quantity']);
+				if ($products)
+				{
+					header('Location: index.php?page=products');
+					exit;
+				}
+				else
+				{
+					$errors[] = "Erreur interne";
+				}
+		   }
+		   catch (Exception $e)
+		   {
+		   		$errors = $e->getErrors();
+		   }
 		}
-		else
-		{
-			$errors[] = "Erreur interne";
-		}
-   }
-   catch (Exception $e)
-   {
-   		$errors = $e->getErrors();
-   }
+	}
 }

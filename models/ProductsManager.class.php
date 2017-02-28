@@ -24,7 +24,7 @@
 		}
 		public function findById($id)
 		{
-			$id = intval($this->db, $id);
+			$id = intval($id);
 	
 			$res = mysqli_query($this->db, "SELECT * FROM products WHERE id='".$id."'");
 			$products = mysqli_fetch_object($res, "Products", [$this->db]); 
@@ -102,7 +102,7 @@
 			$picture = mysqli_real_escape_string($this->db, $products->getPicture());
 			$description = mysqli_real_escape_string($this->db, $products->getDescription());
 			$price = floatval($products->getPrice());
-			$quantity = intval($product->getQuantity());
+			$quantity = intval($products->getQuantity());
 			$res = mysqli_query($this->db, "INSERT INTO products (id_category, name, picture, description, price, quantity) VALUES('".$id_category."', '".$name."', '".$picture."', '".$description."', '".$price."', '".$quantity."')");
 			$id = mysqli_insert_id($this->db);// last_insert_id
 			return $this->findById($id);

@@ -50,7 +50,7 @@ class Products
 
 	//SETTER
 
-	public function setCategory( Products $category)
+	public function setCategory(Category $category)
 	{
 		$this->category = $category;
 		$this->id_category = $category->getCategory();
@@ -120,6 +120,10 @@ class Products
 		if ($quantity <= 0)
 		{
 			return "Les quantités ne peuvent pas être négatives";
+		}
+		if ($quantity == 0)
+		{
+			return "Le produit n'est plus disponible";
 		}
 		else
 		{
