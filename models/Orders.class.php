@@ -3,9 +3,11 @@ class Orders
 {
 	private $id; 
 	private $id_users;
-	private $date;
 	private $status;
 	private $price;
+	private $date;
+
+	private $users
 	private $db;
 
 	public function __construct($db)
@@ -19,11 +21,9 @@ class Orders
 	}
 	public function getUsers()
 	{
-		return $this->id_users; 
-	}
-	public function getDate()
-	{
-		return $this->date; 
+		$manager = new UserManager($this->db);
+		$this->users = $manager->findById($this->id_users);
+		return $this->users;
 	}
 	public function getStatus()
 	{
@@ -33,6 +33,10 @@ class Orders
 	{
 		return $this->price; 
 	}
+	public function getDate()
+	{
+		return $this->date; 
+	}
 	
 	// SETTER
 
@@ -40,38 +44,62 @@ class Orders
 	public function setUsers(Users $users)
 	{
 		$this->users = $users;
-		$this->id_author = $users->getId();  
+		$this->id_users = $users->getId();  
 	}
-	public function setDate($date)
-	{
-		$tab = explode('-', $date);
-		$month = $tab[1];
-		$day = $tab[2];
-		$year = $tab[0];
-
-		if (checkdate($month, $day, $year) == true)
-		{
-			$this->date = $date;
-		} 
-	}
-	
 	public function setStatus($status)
 	{
-		if (strlen($status) < 63 && strlen($status) < 2)
+		if (strlen($status) < 63)
+		{
+			return "Le statut est valide";
+		} 
+		if (strlen($status) < 2)
+		{
+			return "Le statut est invalide";
+		}
+		else
 		{
 			$this->status = $status;
-		} 
+		}
 	}
 	public function setPrice($price)
 	{
-		if ($price <= 0)
+		if (strlen($price) < 0)
 		{
 			return "Le prix ne peut pas être inférieur à 0";
 		}
-		if ($price >= 10000 )
+		else if (strlen($price) > 10000 )
 		{
 			return "Le prix ne peut pas être supérieur à 10000";
 		}
+		else
+		{
+			$this->price = $price;
+		}
+	}
+	public function setDate($date)
+	{
+		if($date == '')
+		{
+			return "Date invalide";
+		}
+		$tab = explode('-', $date);
+		if (isset($tab[0], $tab[1], $tab[2]))
+		{
+			$month = $tab[1];
+			$day = $tab[2];
+			$year = $tab[0];
+			if (checkdate($month, $day, $year) == true)
+			{
+				$this->date = $date;
+			}
+			else
+			{
+				return "La date est invalide.";
+			}
+		}
+	else
+	{
+		return "Le date est invalide";
 	}
 }
 ?>
