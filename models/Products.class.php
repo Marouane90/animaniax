@@ -50,7 +50,7 @@ class Products
 
 	//SETTER
 
-	public function setCategory( Products $category)
+	public function setCategory( Category $category)
 	{
 		$this->category = $category;
 		$this->id_category = $category->getCategory();
