@@ -39,7 +39,7 @@ class Products
 	{
 		return $this->description;
 	} 
-	public function gePrice()
+	public function getPrice()
 	{
 		return $this->price;
 	} 
@@ -53,7 +53,7 @@ class Products
 	public function setCategory(Category $category)
 	{
 		$this->category = $category;
-		$this->id_category = $category->getCategory();
+		$this->id_category = $category->getId();
 	}
 	public function setName($name)
 	{
@@ -79,6 +79,10 @@ class Products
 		else if (strlen($picture)>511)
 		{
 			return "L'url de l'image est trop long (>511)";
+		}
+		else if (filter_var($picture, FILTER_VALIDATE_URL) == false) 
+		{
+			return "L'url n'est pas valide";
 		}
 		else
 		{
