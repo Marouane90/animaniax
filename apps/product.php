@@ -1,6 +1,15 @@
 <?php
 
+	if (isset($_GET['id']))
+{
+	$manager = new ProductsManager($db);
+	$product = $manager->findById($_GET['id']);
+	require("views/product.phtml");
+}
 
+else {
+	echo "erreur";
+}
 
 
 
@@ -17,7 +26,7 @@
 // 	if ($products)
 // 	{	
 // 		var_dump($products);
-		require('views/product.phtml');
+		// require('views/product.phtml');
 // 	}
 // 	else
 // 	{
