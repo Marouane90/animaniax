@@ -1,28 +1,36 @@
 <?php
 var_dump($_POST);
-if (isset($_POST['name'], $_POST['description']))
+
+if (isset($_POST["action"]))
 {
-	// Etape 2
-	$manager = new CategoryManager($db);
-	try
+	$action = $_POST["action"];
+	if ($action == "create_category")
 	{
-		// Etape 3
-		//           public function create($content, $id_author, $id_article) -> CommentManager.class.php ligne 59
-		$category = $manager->create($_POST['name'],$_POST['description']);
-		if ($category)
+		if (isset($_POST['name'], $_POST['description']))
 		{
-			// Etape 4
-			header('Location: index.php?page=categories');
-			exit;
+			// Etape 2
+			$manager = new CategoryManager($db);
+			try
+			{
+				// Etape 3
+				//           public function create($content, $id_author, $id_article) -> CommentManager.class.php ligne 59
+				$category = $manager->create($_POST['name'],$_POST['description']);
+				if ($category)
+				{
+					// Etape 4
+					header('Location: index.php?page=categories');
+					exit;
+				}
+				else
+				{
+					$errors[] = "Erreur interne";
+				}
+			}
+			catch (Exceptions $e)
+			{
+				$errors = $e->getErrors();
+			}
 		}
-		else
-		{
-			$errors[] = "Erreur interne";
-		}
-	}
-	catch (Exceptions $e)
-	{
-		$errors = $e->getErrors();
 	}
 }
 ?>
