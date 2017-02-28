@@ -1,13 +1,17 @@
 <div class="content">
-	<a href="#">
-		<h1>Chat siamois</h1>
-		<img src="https://goo.gl/images/0v2cQV" alt="chat">
-	</a>
-	<h2>Description</h2>
-	<p>Le Siamois est une race de chat originaire de Thaïlande, caractérisée par un physique de type oriental. Le Siamois est une race très populaire qui durant toute son histoire a connu bien des évolutions. L'origine de ce félin se perd dans la nuit profonde de l'Orient. C'est en 1884 que les premiers chats Siamois firent leur apparition en Angleterre.
-	</p>
+	
+		<h1><?=htmlentities($product->getName())?></h1>
+		<img class=" pull-left" style="width:20%; padding-right:30px;" src="<?=htmlentities($product->getPicture())?>" alt="chat">
+	
+	<h2><?=htmlentities($product->getName())?></h2>
+	<p><?=htmlentities($product->getDescription())?></p>
+	<a class="button btn btn-info" href="">Rajouter au panier</a>
+	<p><?=htmlentities($product->getPrice())?> euros</p>
+	<p style="padding-top:20px;">Il est reste <?=htmlentities($product->getQuantity())?></p>
+
 
 </div>
-<?php
-// require('apps/create_comment.php');
-// require('apps/comments.php');
+<div class="clearfix"></div>
+
+<!-- // require('apps/create_comment.php');
+// require('apps/comments.php'); -->
