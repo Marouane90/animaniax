@@ -13,7 +13,7 @@
 			$id_category = intval($category->getId());
 			$list = [];
 			$res = mysqli_query($this->db, "SELECT * FROM products WHERE id_category='".$id_category."' ORDER BY name");
-			while($products = mysqli_fetch_object($res, "Products", [$this->db]));
+			while($products = mysqli_fetch_object($res, "Products", [$this->db]))
 
 			//$user = new User();
 			
