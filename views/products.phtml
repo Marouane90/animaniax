@@ -1,13 +1,14 @@
 
-<a href="index.php?page=product&id=<?=$product->getId()?>">
 	<div class="row message">
 		<div class="col-sm-4">
-			<p class= "products_name">Name <?=htmlentities($product->getName())?></p>
+			<a href="index.php?page=product&id=<?=$product->getId()?>">
+			<p class= "products_name">Chat  <?=htmlentities($product->getName())?></p>
 			<img style="width:20%;" src="<?=htmlentities($product->getPicture())?>" alt="picture animals" class="picture_animals">
 			<p class ="products_description">Category<?=htmlentities($product->getCategory()->getName())?></p>
 			<p class ="products_price"><?=htmlentities($product->getPrice())?></p>
 			<p class ="products_quantity"><?=htmlentities($product->getQuantity())?></p>
 		</div>
+
 	</div>
 </a>
 
