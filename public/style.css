@@ -10,5 +10,10 @@
 	width: 20%;
 	margin: 0 auto;
 }
-
+div.alert{
+	margin-top: 50px;
+}
+div.panel-body{
+	word-wrap: break-word;
+}
 
