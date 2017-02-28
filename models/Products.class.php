@@ -39,7 +39,7 @@ class Products
 	{
 		return $this->description;
 	} 
-	public function gePrice()
+	public function getPrice()
 	{
 		return $this->price;
 	} 
@@ -53,7 +53,7 @@ class Products
 	public function setCategory(Category $category)
 	{
 		$this->category = $category;
-		$this->id_category = $category->getCategory();
+		$this->id_category = $category->getId();
 	}
 	public function setName($name)
 	{
@@ -80,6 +80,10 @@ class Products
 		{
 			return "L'url de l'image est trop long (>511)";
 		}
+		else if (filter_var($picture, FILTER_VALIDATE_URL) == false) 
+		{
+			return "L'url n'est pas valide";
+		}
 		else
 		{
 			$this->picture = $picture;
@@ -89,11 +93,11 @@ class Products
 	{
 		if (strlen($description)<3)
 		{
-			return "L'url de l'image est trop court (<3)";
+			return "La description est trop court (<3)";
 		}
 		else if (strlen($description)>1023)
 		{
-			return "L'url de l'image est trop long (>1023)";
+			return "La description est trop long (>1023)";
 		}
 		else 
 		{
@@ -104,7 +108,7 @@ class Products
 	{
 		if ($price <= 0)
 		{
-			return "Le prix ne peut pas etre inférieur à 0";
+			return "Le prix ne peut pas etre inférieur ou égal à 0";
 		}
 		else if ($price >= 10000)
 		{
@@ -121,7 +125,7 @@ class Products
 		{
 			return "Les quantités ne peuvent pas être négatives";
 		}
-		if ($quantity == 0)
+		else if ($quantity == 0)
 		{
 			return "Le produit n'est plus disponible";
 		}

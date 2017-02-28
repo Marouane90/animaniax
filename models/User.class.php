@@ -10,6 +10,12 @@ class User
 	private $city;
 	private $birthdate;
 	private $admin;
+	private $db;
+
+	public function __construct($db)
+	{
+		$this->db = $db;
+	}
 
 	// **************************getter*****************************
 
