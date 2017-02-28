@@ -80,6 +80,7 @@ class CommentManager
 		$content = mysqli_real_escape_string($this->db, $content);
 		$id_author = intval($comment->getAuthor()->getId());
 		$id_product = intval($comment->getProduct()->getId());
+		$rate = mysqli_real_escape_string($this->db, $rate);
 		$res = mysqli_query($this->db, "INSERT INTO comments (content, id_author, id_product, rate) VALUES('".$content."', '".$id_author."', '".$id_product."', '".$rate."')");
 		var_dump(mysqli_error($this->db));
 		if (!$res)
