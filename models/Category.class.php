@@ -2,8 +2,6 @@
 
 class Category
  {
-
-
 	private $id ;
 	private $name;
 	private $description;
@@ -12,9 +10,6 @@ class Category
 	{
 		$this->db = $db;
 	}
-
-
-
 	
 	// GETTER------------------------------------------------------------------
 	public function getId()
@@ -35,11 +30,11 @@ class Category
 	{
 		if (strlen($name) > 31)
 		{
-			return "Contenu trop long)";
+			return "Le nom est trop long(>31)";
 		}
 		else if (strlen($name) < 2)
 		{
-			return "Contenu trop court (< 2)";
+			return "Le nom est trop court (< 2)";
 		}
 		else
 		{
@@ -47,30 +42,21 @@ class Category
 		}
 	}
 	
-	
 	public function setDescription($description)
 	{
 		if (strlen($description) > 4095)
 		{
-			return "Contenu trop lon)";
+			return "La descritpion est trop longue(> 4095)";
 		}
 		else if (strlen($description) < 2)
 		{
-			return "Contenu trop court (< 2)";
+			return "La descritpion est trop courte (< 2)";
 		}
 		else
 		{
 			$this->description = $description;
 		}
 	}
-	
-
-
-
-
 }
-
-
-
 
 ?>
