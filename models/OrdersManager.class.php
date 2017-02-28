@@ -22,14 +22,13 @@ class OrdersManager
 	{
 		$id = intval($id);
 		$res = mysqli_query($this->db, "SELECT * FROM orders WHERE id='".$id."'");
-		$orders = mysqli_fetch_object($res, "Orders", [$this->db]));
+		$orders = mysqli_fetch_object($res, "Orders", [$this->db]);
 		return $orders;
 	}
-	public function findByUsers(Users $users)
+	public function findByUsers(User $users)
 	{
 		$id_users = intval($users->getId());
 		$list = [];
-
 
 		$res = mysqli_query($this->db, "SELECT * FROM orders WHERE id_users='".$id_users."'");
 		while($order = mysqli_fetch_object($res, "Orders", [$this->db]));
@@ -37,7 +36,15 @@ class OrdersManager
 			$list[] = $order;
 		}
 		return $list;
-
+	}
+	public function findCartByUsers(User $users)
+	{
+		$id_users = intval($users->getId());
+		
+		$res = mysqli_query($this->db, "SELECT * FROM orders WHERE id_users='".$id_users."' AND status='panier' ORDER BY date LIMIT 1");
+		$cart = mysqli_fetch_object($res, "Orders", [$this->db]);
+		
+		return $cart;
 	}
 	// UPDATE
 	public function save(Orders $orders)
