@@ -28,10 +28,16 @@ class OrdersManager
 	public function findByUsers(Users $users)
 	{
 		$id_users = intval($users->getId());
+		$list = [];
+
 
 		$res = mysqli_query($this->db, "SELECT * FROM orders WHERE id_users='".$id_users."'");
-		$id_users = mysqli_fetch_object($res, "Orders");
-		return $id_users;	
+		while($order = mysqli_fetch_object($res, "Orders", [$this->db]));
+		{
+			$list[] = $order;
+		}
+		return $list;
+
 	}
 	// UPDATE
 	public function save(Orders $orders)
