@@ -48,9 +48,9 @@ class Orders
 	}
 	public function setStatus($status)
 	{
-		if (strlen($status) < 63)
+		if (strlen($status) > 63)
 		{
-			return "Le statut est valide";
+			return "Le statut est invalide";
 		} 
 		if (strlen($status) < 2)
 		{
@@ -66,10 +66,6 @@ class Orders
 		if (strlen($price) < 0)
 		{
 			return "Le prix ne peut pas être inférieur à 0";
-		}
-		else if (strlen($price) > 10000 )
-		{
-			return "Le prix ne peut pas être supérieur à 10000";
 		}
 		else
 		{
