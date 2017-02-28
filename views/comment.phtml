@@ -4,13 +4,12 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<strong>
-					<?=htmlentities($comment->getUser()->getEmail())?>
+					<?=htmlentities($comment->getAuthor()->getEmail())?>
 				</strong> 
 				<span class="text-muted"><?=htmlentities($comment->getDate())?></span>
 			</div>
 			<div class="panel-body">
 				<p><?=htmlentities($comment->getContent())?></p>
-				<p><?=htmlentities($comment->getRate())?></p>
 			</div>
 		</div>
 	</div>
