@@ -13,6 +13,7 @@
 	width: 20%;
 	margin: 0 auto;
 }
+<<<<<<< HEAD
 /*.products{
 	font-family: 'Open Sans', sans-serif;
 	padding: 0 6px;
@@ -63,6 +64,12 @@
 }
 .pi-img-wrapper {
     position: relative;
+}
+div.alert{
+	margin-top: 50px;
+}
+div.panel-body{
+	word-wrap: break-word;
 }
 
 .pi-img-wrapper div {

@@ -49,7 +49,7 @@ class CommentManager
 		return $comment;
 	}
 	// INSERT INTO    dans le même ordre que dans traitementComments.php:$_POST['content'], $_POST['id_article'], $_SESSION['id']
-	public function create($content, User $author, Products $product, $rate)
+	public function create($content, User $author, Products $product)
 	{
 		$errors = [];
 		$comment = new Comment($this->db);
@@ -68,11 +68,6 @@ class CommentManager
 		{
 			$errors[] = $error;
 		}
-		$error = $comment->setRate($rate);
-		if($error)
-		{
-			$errors[] = $error;
-		}
 		if(count($errors) != 0)
 		{
 			throw new Exceptions($errors);
@@ -80,9 +75,8 @@ class CommentManager
 		$content = mysqli_real_escape_string($this->db, $content);
 		$id_author = intval($comment->getAuthor()->getId());
 		$id_product = intval($comment->getProduct()->getId());
-		$rate = mysqli_real_escape_string($this->db, $rate);
-		$res = mysqli_query($this->db, "INSERT INTO comments (content, id_author, id_product, rate) VALUES('".$content."', '".$id_author."', '".$id_product."', '".$rate."')");
-		var_dump(mysqli_error($this->db));
+		$res = mysqli_query($this->db, "INSERT INTO comments (content, id_author, id_product) VALUES('".$content."', '".$id_author."', '".$id_product."')");
+		// var_dump(mysqli_error($this->db));
 		if (!$res)
 		{
 			throw new Exceptions(["Erreur interne"]);

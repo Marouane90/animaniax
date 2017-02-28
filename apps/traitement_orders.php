@@ -30,8 +30,7 @@ if (isset($_POST['action']))
 			}
 		}
 	}
-}
-if ($action == "modify")
+	if ($action == "modify")
 	{
 		// Etape 1
 		if (isset($_POST['id_orders'],$_POST['id_products']))

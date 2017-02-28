@@ -7,7 +7,7 @@ class Orders
 	private $price;
 	private $date;
 
-	private $users
+	private $users;
 	private $db;
 
 	public function __construct($db)
@@ -93,9 +93,10 @@ class Orders
 				return "La date est invalide.";
 			}
 		}
-	else
-	{
-		return "Le date est invalide";
+		else
+		{
+			return "Le date est invalide";
+		}
 	}
 }
 ?>
