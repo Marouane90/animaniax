@@ -3,7 +3,7 @@ $errors = [];
 $page = "categories";
 $db = mysqli_connect("192.168.1.57","animaniax","animaniax","animaniax");
 session_start();// http://php.net/manual/fr/function.session-start.php
-$access = ["login", "register", "categories", "category_elem","products", "create_category","cart","orders","user","product","create_comment","create_product","comments", "contact"];
+$access = ["login", "register", "categories", "category_elem","products", "create_category","cart","orders","user","product","create_comment","create_product","comments", "contact", "orders_elem"];
 if (isset($_GET['page']) && in_array($_GET['page'], $access))
 {
     $page = $_GET['page'];
