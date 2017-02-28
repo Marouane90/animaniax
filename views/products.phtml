@@ -1,11 +1,11 @@
 
 <div class="row message">
 	<div class="col-sm-4">
-		<p class= "products_name"><?=htmlentities($products['name'])?></p>
-		<img src="<?=htmlentities($products['picture'])?>" alt="picture animals" class="picture_animals">
-		<p class ="products_description"><?=htmlentities($products['description'])?></p>
-		<p class ="products_price"><?=htmlentities($products['price'])?></p>
-		<p class ="products_quantity"><?=htmlentities($products['quantity'])?></p>
+		<p class= "products_name">Name <?=htmlentities($product->getName())?></p>
+		<img src="<?=htmlentities($product->getPicture())?>" alt="picture animals" class="picture_animals">
+		<p class ="products_description">category<?=htmlentities($product->getCategory())?></p>
+		<p class ="products_price"><?=htmlentities($product->getPrice())?></p>
+		<p class ="products_quantity"><?=htmlentities($product->getQuantiy())?></p>
 	</div>
 </div>
 
