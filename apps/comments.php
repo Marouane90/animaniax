@@ -10,7 +10,7 @@ if (isset($_GET['id']))
 	while ($count < count($list))// list.length
 	{
 		$comment = $list[$count];
-		require('views/comments.phtml');
+		require('views/comment.phtml');
 		$count++;
 	}
 ?>

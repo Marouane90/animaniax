@@ -1,7 +1,7 @@
 <?php
 var_dump($_POST);
 
-if(isset($_POST["content"], $_SESSION['id'], $_POST["id_product"], $_POST["rate"]))
+if(isset($_POST["id_product"], $_POST["content"], $_SESSION['id']))
 {
 	// Etape 2
 	$userManager = new UserManager($db);
