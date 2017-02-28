@@ -3,6 +3,9 @@
 {
 	require('views/articles_elem.phtml');
 }*/
+$manager = new ProductsManager($db);
+$list = $manager->findByCategory();
+
 $count = 0;
 while ($count < count($list))// list.length
 {
@@ -10,4 +13,5 @@ while ($count < count($list))// list.length
 	require('views/products.phtml');
 	$count++;
 }
+var_dump($count);
 ?>
