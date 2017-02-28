@@ -3,15 +3,21 @@
 {
 	require('views/articles_elem.phtml');
 }*/
-$manager = new ProductsManager($db);
-$list = $manager->findByCategory();
-
-$count = 0;
-while ($count < count($list))// list.length
+if (isset($_GET['id_category']))
 {
-	$products = $list[$count];
-	require('views/products.phtml');
-	$count++;
+	$categoryManager = new CategoryManager($db);
+	$category = $categoryManager->findById($_GET['id_category']);
+	$manager = new ProductsManager($db);
+	$list = $manager->findByCategory($category);
+
+	$count = 0;
+	while ($count < count($list))// list.length
+	{
+		$product = $list[$count];
+		require('views/products.phtml');
+		$count++;
+	}
 }
-var_dump($count);
+else
+	echo "taggle";
 ?>
