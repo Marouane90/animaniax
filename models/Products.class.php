@@ -93,11 +93,11 @@ class Products
 	{
 		if (strlen($description)<3)
 		{
-			return "L'url de l'image est trop court (<3)";
+			return "La description est trop court (<3)";
 		}
 		else if (strlen($description)>1023)
 		{
-			return "L'url de l'image est trop long (>1023)";
+			return "La description est trop long (>1023)";
 		}
 		else 
 		{
@@ -108,7 +108,7 @@ class Products
 	{
 		if ($price <= 0)
 		{
-			return "Le prix ne peut pas etre inférieur à 0";
+			return "Le prix ne peut pas etre inférieur ou égal à 0";
 		}
 		else if ($price >= 10000)
 		{
@@ -125,7 +125,7 @@ class Products
 		{
 			return "Les quantités ne peuvent pas être négatives";
 		}
-		if ($quantity == 0)
+		else if ($quantity == 0)
 		{
 			return "Le produit n'est plus disponible";
 		}
