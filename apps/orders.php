@@ -1,13 +1,16 @@
-<?php 
-if (isset($_GET['id']))
+<?php
+if (isset($_SESSION['id']))
 {
+	$userManager = new UserManager($db);
+	$user = $userManager->findById($_SESSION['id']);
 	$manager = new OrdersManager($db);
-	$order = $manager->findById($_GET['id']);
+	$list = $manager->findByUsers($user);
+	var_dump($list);
 	require("views/orders.phtml");
 }
 
 else {
-	echo "Pas de commandes en cours!";
+	echo "Vous devez être connecté pour afficher l'historique des commandes";
 }
 
 ?>
