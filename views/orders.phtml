@@ -1,3 +1,10 @@
 <div class="container_orders">
-	
+	<h2>Mes commandes</h2>
+	<div>
+		<?=htmlentities($orders->getProduct()->getLogin())?>
+		<?=htmlentities($orders->getUsers()->getLogin())?>
+		<?=htmlentities($orders->getStatus())?>
+		<?=htmlentities($orders->getPrice())?>
+		<?=htmlentities($orders->getDate())?>
+	</div>
 </div>
