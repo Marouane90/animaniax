@@ -62,7 +62,7 @@ class UserManager
 	public function create($email, $password1, $password2, $name, $address, $city, $birthdate)
 	{
 		$errors = [];
-		$user = new User();
+		$user = new User($this->db);
 		$error = $user->setEmail($email);
 		if($error)
 		{

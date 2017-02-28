@@ -12,7 +12,7 @@ class OrdersManager
 	{	
 		$list = [];
 		$res = mysqli_query($this->db, "SELECT * FROM orders ORDER BY date");
-		while ($orders = mysqli_fetch_object($res, "Orders"))
+		while ($orders = mysqli_fetch_object($res, "Orders", [$this->db]))
 		{
 			$list[] = $orders;
 		}
@@ -22,7 +22,7 @@ class OrdersManager
 	{
 		$id = intval($id);
 		$res = mysqli_query($this->db, "SELECT * FROM orders WHERE id='".$id."'");
-		$orders = mysqli_fetch_object($res, "Orders");
+		$orders = mysqli_fetch_object($res, "Orders", [$this->db]));
 		return $orders;
 	}
 	public function findByUsers(Users $users)
@@ -62,7 +62,7 @@ class OrdersManager
 	public function create(Users $users)
 	{
 		$errors = [];
-		$orders = new Orders();
+		$orders = new Orders($this->db);
 
 		$error = $orders->setUsers($users);
 		if ($error)
