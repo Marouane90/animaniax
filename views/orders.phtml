@@ -1,10 +1,9 @@
 <div class="container_orders">
-	<h2>Mes commandes</h2>
+	<h2>Historique de mes commandes</h2>
 	<div>
-		<?=htmlentities($orders->getProduct()->getId())?>
-		<?=htmlentities($orders->getUsers()->getId())?>
-		<?=htmlentities($orders->getStatus())?>
-		<?=htmlentities($orders->getPrice())?>
-		<?=htmlentities($orders->getDate())?>
+		
+		<?php 
+			require("apps/orders_elem.php");
+		 ?>
 	</div>
 </div>
