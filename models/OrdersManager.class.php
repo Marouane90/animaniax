@@ -31,7 +31,7 @@ class OrdersManager
 		$list = [];
 
 		$res = mysqli_query($this->db, "SELECT * FROM orders WHERE id_users='".$id_users."'");
-		while($order = mysqli_fetch_object($res, "Orders", [$this->db]));
+		while($order = mysqli_fetch_object($res, "Orders", [$this->db]))
 		{
 			$list[] = $order;
 		}
