@@ -22,7 +22,7 @@ class UserManager
 	{
 		$id=intval($id); // /!\ hyper important pour la sécurité, ne pas l'oublier /!\
 		$res = mysqli_query($this->db, "SELECT * FROM users WHERE id='".$id."' LIMIT 1");
-		$user = mysqli_fetch_object($res, "User"); // $user = new User();
+		$user = mysqli_fetch_object($res, "User", [$this->db]); // $user = new User();
 		return $user;
 	}
 	
@@ -30,7 +30,7 @@ class UserManager
 	{
 		$email=mysqli_real_escape_string($this->db, $email); // /!\ hyper important pour la sécurité, ne pas l'oublier /!\
 		$res = mysqli_query($this->db, "SELECT * FROM users WHERE email='".$email."' LIMIT 1");
-		$user = mysqli_fetch_object($res, "User"); // $user = new User();
+		$user = mysqli_fetch_object($res, "User", [$this->db]); // $user = new User();
 		return $user;
 	}
 	// UPDATE
