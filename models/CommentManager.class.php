@@ -76,7 +76,7 @@ class CommentManager
 		$id_author = intval($comment->getAuthor()->getId());
 		$id_product = intval($comment->getProduct()->getId());
 		$res = mysqli_query($this->db, "INSERT INTO comments (content, id_author, id_product) VALUES('".$content."', '".$id_author."', '".$id_product."')");
-		var_dump(mysqli_error($this->db));
+		// var_dump(mysqli_error($this->db));
 		if (!$res)
 		{
 			throw new Exceptions(["Erreur interne"]);

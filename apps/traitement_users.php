@@ -1,7 +1,7 @@
 <?php 
 
 // Etape 0 : pendant le développement on laisse le var_dump
-var_dump($_POST);
+// var_dump($_POST);
 
 if (isset($_GET["page"]) && $_GET["page"] == "logout")
 {

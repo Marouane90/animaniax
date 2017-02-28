@@ -1,5 +1,4 @@
 <?php
-var_dump($_POST);
 
 if(isset($_POST["id_product"], $_POST["content"], $_SESSION['id']))
 {
