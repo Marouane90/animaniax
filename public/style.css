@@ -2,7 +2,7 @@
     box-sizing: border-box;
 }
 body{
-    margin-top: 180px;
+    margin-top: 15%;
 }
 .containerFooter img{
 	max-width: 40%;
@@ -132,4 +132,24 @@ div.panel-body{
             color: #fff;
             background: #e84d1c;
             border-color: #e84d1c;
+        }
+
+        .navbar-right:hover img {
+          transform:rotate(-15deg);
+        }
+        .navbar-right a {
+          padding: 0 !important;
+          margin-top: 10px;
+        }
+        .navbar-right img {
+          width: 100%;
+        }
+
+        .navbar-right {
+            width: 15%;
+            display: inline-block;
+        }
+
+        .navbar-nav input {
+           margin-top: 10px;
         }
