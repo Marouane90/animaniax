@@ -19,12 +19,12 @@ class Orders
 	{
 		if ($this->products == null)
 		{
-			$manager = new ProductManager($this->db);
+			$manager = new ProductsManager($this->db);
 			$this->products = $manager->findByOrder($this);
 		}
 		return $this->products;
 	}
-	public function addProduct(Product $product)
+	public function addProduct(Products $product)
 	{
 		if ($this->products == null)
 		{
