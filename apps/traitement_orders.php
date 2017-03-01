@@ -16,7 +16,7 @@ if (isset($_POST['action']))
 			{
 				if (!$cart)
 				{
-					$cart = $manager->create($users);
+					$cart = $manager->create($user);
 				}
 				$cart->addProduct($product);
 				$manager->save($cart);
