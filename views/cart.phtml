@@ -1,4 +1,9 @@
 <div>
-	<h2>Mon panier</h2>
+	<p>
+		<?=htmlentities($cart->getUser()->getEmail())?>
+		<?=htmlentities($cart->getStatus())?>
+		<?=htmlentities($cart->getPrice())?>
+		<?=htmlentities($cart->getDate())?>
+	</p>
 	
-</div>
+</div>		

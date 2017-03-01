@@ -16,7 +16,7 @@ if (isset($_POST['action']))
 				$orders = $manager->create($users);
 				if ($orders)
 				{
-					header('Location: index.php?page=orders');
+					header('Location: index.php?page=cart');
 					exit;
 				}
 				else
@@ -45,7 +45,7 @@ if (isset($_POST['action']))
 				$orders = $manager->modify($users);
 				if ($orders)
 				{
-					header('Location: index.php?page=orders');
+					header('Location: index.php?page=cart');
 					exit;
 				}
 				else
