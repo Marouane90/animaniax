@@ -2,5 +2,5 @@
 	<a href="index.php?page=products&id_category=<?=$category->getId()?>">
 			<h2><?=htmlentities($category->getName())?></h2>
 		</a>
-		<p><?=htmlentities($category->getDescription())?></p>
+		<p><?=nl2br(htmlentities($category->getDescription()))?></p>
 </article>
