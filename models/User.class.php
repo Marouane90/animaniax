@@ -12,6 +12,8 @@ class User
 	private $admin;
 	private $db;
 
+	private $cart;
+
 	public function __construct($db)
 	{
 		$this->db = $db;
@@ -19,6 +21,12 @@ class User
 
 	// **************************getter*****************************
 
+	public function getCart()
+	{
+		$manager = new OrdersManager($this->db);
+		$this->cart = $manager->findCartByUser($this);
+		return $this->cart;
+	}
 	public function getId()
 	{
 		return $this->id;

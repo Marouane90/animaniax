@@ -1,23 +1,4 @@
-<!-- <div class="products img-thumbnail">
-	<div class="col-sm-4">
-		<p class= "products_name">Name <?=htmlentities($product->getName())?></p>
-		<img style=width="300" height="200"src="<?=htmlentities($product->getPicture())?>" alt="picture animals" class="picture_animals">
-		<p class ="products_description">Category<?=htmlentities($product->getCategory()->getName())?></p>
-		<p class ="products_price"><?=htmlentities($product->getPrice())?></p>
-		<p class ="products_quantity"><?=htmlentities($product->getQuantity())?></p>
-		</div>
-	</div> -->
-
-	<div class="col-md-4">
-        <div class="product-item">
-            <div class="pi-img-wrapper">
-              <a href="index.php?page=product&id=<?=$product->getId()?>">
-              <p class ="products_description">Category<?=htmlentities($product->getCategory()->getName())?></p>    
-               <img style=width="300" height="200"src="<?=htmlentities($product->getPicture())?>" alt="picture animals" class="picture_animals">
-              <p class= "products_name">Name <?=htmlentities($product->getName())?></p>
-              <p class ="products_price"><?=htmlentities($product->getPrice())?>€</p>
-            </div>
-              <a href="javascript:;" class="btn add2cart">Ajouter au panier</a>
-        <div class="sticker sticker-new"></div>
-        </div>
-    </div>
+<h1>
+  <p class ="products_description"><?=htmlentities($category->getName())?></p>
+</h1>
+<?php require("apps/product_elem.php"); ?>

@@ -1,9 +1,11 @@
-<div>
+<div class="clearfix">
 	<p>
-		<?=htmlentities($cart->getUser()->getEmail())?>
-		<?=htmlentities($cart->getStatus())?>
-		<?=htmlentities($cart->getPrice())?>
-		<?=htmlentities($cart->getDate())?>
+		<p>Status : <?=htmlentities($cart->getStatus())?></p>
+		<p>Prix : <?=htmlentities($cart->getPrice())?></p>
+		<p>Date : <?=htmlentities($cart->getDate())?></p>
 	</p>
-	
+	<?php require('apps/cart_elem.php'); ?>
 </div>		
+	<form  class="v_order" method="POST">
+		<button type="submit" class="btn btn-default">Valider la commande</button>
+	</form>
