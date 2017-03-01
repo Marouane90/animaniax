@@ -196,5 +196,10 @@ input[type="range"] {
 }
 
 output {
-    float:right;
+    position: absolute;
+    top: 45%;
+    left: 75%;
+    font-size: 2rem;
+    font-weight: bold;
+    color: DarkBlue;
 }
