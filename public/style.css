@@ -1,6 +1,9 @@
 * {
     box-sizing: border-box;
 }
+body{
+    margin-top: 180px;
+}
 .containerFooter img{
 	max-width: 40%;
 }
