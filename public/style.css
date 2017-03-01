@@ -152,8 +152,11 @@ div.panel-body{
         .navbar-nav input {
            margin-top: 10px;
         }
-.container .contact .contact h2,.container .contact .contact h4{
-    font-weight: 0 !important;
+.coordonnees h2,.coordonnees h4{
+    font-weight: bold;
+}
+.contact h2{
+    font-weight: bold;
 }
 .form-area
 {
