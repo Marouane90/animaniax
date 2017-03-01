@@ -50,6 +50,14 @@ class OrdersManager
 	public function save(Orders $orders)
 	{
 		$id = intval($orders->getId());
+		$products = $orders->getProducts();
+		mysqli_query($this->db, "DELETE FROM link_orders_products WHERE id_orders='".$id."'");
+		$count = 0;
+		while ($count < count($products))
+		{
+			mysqli_query($this->db, "INSERT INTO link_orders_products (id_orders, id_products) VALUES('".$id."', '".$products[$count]->getId()."')");
+			$count++;
+		}
 		$id_users = intval($orders->getUsers()->getId());
 		$status = mysqli_real_escape_string($this->db, $orders->getStatus());
 		$price = floatval($orders->getPrice());

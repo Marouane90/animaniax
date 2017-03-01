@@ -8,11 +8,29 @@ class Orders
 	private $date;
 
 	private $users;
+	private $products;
 	private $db;
 
 	public function __construct($db)
 	{
 		$this->db = $db;
+	}
+	public function getProducts()
+	{
+		if ($this->products == null)
+		{
+			$manager = new ProductManager($this->db);
+			$this->products = $manager->findByOrder($this);
+		}
+		return $this->products;
+	}
+	public function addProduct(Product $product)
+	{
+		if ($this->products == null)
+		{
+			$this->getProducts();
+		}	
+		$this->products[] = $product;
 	}
 
 	public function getId()
