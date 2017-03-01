@@ -13,7 +13,7 @@ class CommentManager
 	{
 		$id_product = intval($product->getId());
 		$list = [];
-		$res = mysqli_query($this->db, "SELECT * FROM comments WHERE id_product='".$id_product."' ORDER BY date");
+		$res = mysqli_query($this->db, "SELECT * FROM comments WHERE id_product='".$id_product."' ORDER BY date DESC");
 		while ($comment = mysqli_fetch_object($res, "Comment", [$this->db]))
 		{
 			$list[] = $comment;
