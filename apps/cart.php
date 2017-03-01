@@ -5,7 +5,6 @@ if (isset($_SESSION['id']))
 	$user = $userManager->findById($_SESSION['id']);
 	$manager = new OrdersManager($db);
 	$cart = $manager->findCartByUsers($user);
-	var_dump($cart);
 	require("views/cart.phtml");
 }
 
