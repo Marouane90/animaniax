@@ -4,7 +4,7 @@ if (isset($_POST['action']))
 	$action = $_POST['action'];
 	if ($action == "add")
 	{
-		if (isset($_SESSION['id'], $_POST['id_product']))// $_POST['quantity']
+		if (isset($_SESSION['id'], $_POST['id_product'], $_POST['quantity']))
 		{
 			$manager = new OrdersManager($db);
 			$usersManager = new UserManager($db);
