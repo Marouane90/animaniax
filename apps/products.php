@@ -1,17 +1,20 @@
 <?php
 if (isset($_GET['id_category']))
 {
-
 	$categoryManager = new CategoryManager($db);
 	$category = $categoryManager->findById($_GET['id_category']);
-	$manager = new ProductsManager($db);
-	$list = $manager->findByCategory($category);
+	if ($category)
+	{
+		require('views/products.phtml');
+	}
+	else
+	{
+		$errors[] = "YOLO";
+		require('views/errors.phtml');
+	}
 }
-	require('views/products.phtml');
-	
-else{
+else
+{
 	echo "erreur";
 }
-
-
 ?>

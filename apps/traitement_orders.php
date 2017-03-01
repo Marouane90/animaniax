@@ -2,6 +2,33 @@
 if (isset($_POST['action']))
 {
 	$action = $_POST['action'];
+	if ($action == "add")
+	{
+		if (isset($_SESSION['id'], $_POST['id_product']))// $_POST['quantity']
+		{
+			$manager = new OrdersManager($db);
+			$usersManager = new UserManager($db);
+			$productManager = new ProductsManager($db);
+			$product = $productManager->findById($_POST['id_product']);
+			$user = $usersManager->findById($_SESSION['id']);
+			$cart = $user->getCart();
+			try
+			{
+				if (!$cart)
+				{
+					$cart = $manager->create($users);
+				}
+				$cart->addProduct($product);
+				$manager->save($cart);
+				header('Location: index.php?page=cart');
+				exit;
+			}
+			catch (Exceptions $e)
+			{
+				$errors = $e->getErrors();
+			}
+		}
+	}
 	if ($action == "create")
 	{
 		// Etape 1

@@ -1,6 +1,5 @@
 <?php
-$manager = new ProductsManager($db);
-$list = $manager->findByCategory($category);
+$list = $cart->getProducts();
 $count = 0;
 while ($count < count($list))// list.length
 {

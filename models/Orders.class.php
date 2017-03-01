@@ -26,11 +26,14 @@ class Orders
 	}
 	public function addProduct(Products $product)
 	{
+		// $quantity > 0
+		// if $product->getQuantity() > 0
 		if ($this->products == null)
 		{
 			$this->getProducts();
 		}	
 		$this->products[] = $product;
+		// $this->price += $product->getPrice();
 	}
 
 	public function getId()
