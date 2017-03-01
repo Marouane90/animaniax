@@ -29,7 +29,7 @@ if ($page == 'user')
 }
 if ($page == 'logout')
 {
-	$page_logout = "active";
+	$page_logout = "";
 
 }
 if ($page == 'login')
