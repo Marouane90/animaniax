@@ -44,7 +44,6 @@ body{
     background: #fff;
     margin-top: 20px;
     position: relative;
-    margin-top: 200px;
 }
 .product-item:hover {
     box-shadow: 5px 5px rgba(234, 234, 234, 0.9);
