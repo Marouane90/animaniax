@@ -16,7 +16,7 @@ if (isset($_POST["action"]))
 				$products = $manager->create($category, $_POST['name'], $_POST['picture'], $_POST['description'], $_POST['price'], $_POST['quantity']);
 				if ($products)
 				{
-					header('Location: index.php?page=products');
+					header('Location: index.php?page=product&id='.$products->getId());
 					exit;
 				}
 				else
