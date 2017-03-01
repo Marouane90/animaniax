@@ -25,9 +25,9 @@ class OrdersManager
 		$orders = mysqli_fetch_object($res, "Orders", [$this->db]);
 		return $orders;
 	}
-	public function findByUsers(User $users)
+	public function findByUsers(User $user)
 	{
-		$id_users = intval($users->getId());
+		$id_users = intval($user->getId());
 		$list = [];
 
 		$res = mysqli_query($this->db, "SELECT * FROM orders WHERE id_users='".$id_users."'");
@@ -37,9 +37,9 @@ class OrdersManager
 		}
 		return $list;
 	}
-	public function findCartByUsers(User $users)
+	public function findCartByUser(User $user)
 	{
-		$id_users = intval($users->getId());
+		$id_users = intval($user->getId());
 		
 		$res = mysqli_query($this->db, "SELECT * FROM orders WHERE id_users='".$id_users."' AND status='panier' ORDER BY date LIMIT 1");
 		$cart = mysqli_fetch_object($res, "Orders", [$this->db]);
@@ -50,7 +50,15 @@ class OrdersManager
 	public function save(Orders $orders)
 	{
 		$id = intval($orders->getId());
-		$id_users = intval($orders->getUsers()->getId());
+		$products = $orders->getProducts();
+		mysqli_query($this->db, "DELETE FROM link_orders_products WHERE id_orders='".$id."'");
+		$count = 0;
+		while ($count < count($products))
+		{
+			mysqli_query($this->db, "INSERT INTO link_orders_products (id_orders, id_products) VALUES('".$id."', '".$products[$count]->getId()."')");
+			$count++;
+		}
+		$id_users = intval($orders->getUser()->getId());
 		$status = mysqli_real_escape_string($this->db, $orders->getStatus());
 		$price = floatval($orders->getPrice());
 		$date = mysqli_real_escape_string($this->db, $orders->getDate());
@@ -66,12 +74,12 @@ class OrdersManager
 		return $orders;	
 	}
 	// INSERT
-	public function create(Users $users)
+	public function create(User $user)
 	{
 		$errors = [];
 		$orders = new Orders($this->db);
 
-		$error = $orders->setUsers($users);
+		$error = $orders->setUser($user);
 		if ($error)
 		{
 			$errors[] = $error;
@@ -82,7 +90,7 @@ class OrdersManager
 			throw new Exceptions($errors);
 		}	
 
-		$id_users = intval($orders->getUsers()->getId());
+		$id_users = intval($orders->getUser()->getId());
 		$res = mysqli_query($this->db, "INSERT INTO orders (id_users) VALUES('".$id_users."')");
 		if (!$res)
 		{

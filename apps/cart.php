@@ -4,8 +4,11 @@ if (isset($_SESSION['id']))
 	$userManager = new UserManager($db);
 	$user = $userManager->findById($_SESSION['id']);
 	$manager = new OrdersManager($db);
-	$cart = $manager->findCartByUsers($user);
-	var_dump($cart);
+	$cart = $manager->findCartByUser($user);
+	// if ($cart==0) 
+	// {
+	// 	echo "Vous n'avez pas encore de panier en cours";
+	// }
 	require("views/cart.phtml");
 }
 

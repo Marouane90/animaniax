@@ -7,6 +7,18 @@
 		{
 			$this->db=$db;
 		}
+		public function findByOrder(Orders $order)
+		{
+			$id = intval($order->getId());
+			$list = [];
+			$res = mysqli_query($this->db, "SELECT products.* FROM products LEFT JOIN link_orders_products ON link_orders_products.id_products=products.id WHERE link_orders_products.id_orders='".$id."'");
+			while($products = mysqli_fetch_object($res, "Products", [$this->db]))
+			{
+				$list[] = $products;
+			}
+			return $list;
+
+		}
 
 		public function findByCategory(Category $category)
 		{
