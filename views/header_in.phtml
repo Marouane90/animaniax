@@ -13,12 +13,12 @@
 			<ul class="nav navbar-nav">
 				<li class="<?=$page_profile?>"><a href="index.php?page=user">Mon profil</a></li>
 			</ul>
-			<ul class="nav navbar-nav navbar-right">
+			<ul class="nav navbar-nav">
 				<li class="dropdown">
 					<li class="<?=$page_logout?>"><a href="index.php?page=logout">Se déconnecter</a></li>
 					<input type="text" name="search" placeholder="Que recherchez-vous ?"/>
 				</li>
-				<li class="navbar-right"><a href="index.php?page=cart"><img style="width:100%;" src="public/images/cart.png"></a></li>
+				<li class="navbar-right"><a href="index.php?page=cart"><img style="width:40%;" src="public/images/cart.png"></a></li>
 			</ul>
 		</div>
 		<p>Bonjour <strong><?=htmlentities($_SESSION['email'])?></strong>, vous êtes maintenant connecté(e)!</p>
