@@ -24,16 +24,26 @@ class Orders
 		}
 		return $this->products;
 	}
-	public function addProduct(Products $product)
+	public function addProduct(Products $products)
 	{
+
+		// if ($this->)
+		// {
+			
+		// }
+
+		// if ($product->getQuantity() > 0)
+		// {
+
+		// }
 		// $quantity > 0
 		// if $product->getQuantity() > 0
 		if ($this->products == null)
 		{
 			$this->getProducts();
 		}	
-		$this->products[] = $product;
-		// $this->price += $product->getPrice();
+		$this->products[] = $products;
+		$this->price += $products->getPrice();
 	}
 
 	public function getId()

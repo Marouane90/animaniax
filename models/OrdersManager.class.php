@@ -63,7 +63,7 @@ class OrdersManager
 		$price = floatval($orders->getPrice());
 		$date = mysqli_real_escape_string($this->db, $orders->getDate());
 		
-		mysqli_query($this->db, "UPDATE orders SET id_users='".$id_users."', status='".$status."', price='".$price."', date='".$date."', WHERE id='".$id."'");
+		mysqli_query($this->db, "UPDATE orders SET id_users='".$id_users."', status='".$status."', price='".$price."', date='".$date."' WHERE id='".$id."'");
 		return $this->findById($id);
 	}
 	// DELETE
