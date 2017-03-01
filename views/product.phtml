@@ -5,7 +5,11 @@
 		<img class=" pull-left" style="width:20%; padding-right:30px;" src="<?=htmlentities($product->getPicture())?>" alt="chat">
 	
 	<h2><?=htmlentities($product->getDescription())?></h2>
-	<a class="button btn btn-info" href="">Ajouter au panier</a>
+	<form class="form" method="POST">
+	<input type="hidden" name="action" value="create">
+	<input type="hidden" name="name" value="<?=htmlentities($product->getName())?>">
+	<button type="submit" class="button btn btn-info">Ajouter au panier</button>
+	</form>
 	<p><?=htmlentities($product->getPrice())?> euros</p>
 	<p style="padding-top:20px;">Il en reste <?=htmlentities($product->getQuantity())?></p>
 

@@ -9,7 +9,7 @@ if (isset($_POST['action']))
 		{
 			// Etape 2
 			$manager = new OrdersManager($db);
-			$usersManager = new UsersManager($db);
+			$usersManager = new UserManager($db);
 			$users = $usersManager->findById($_SESSION['id']);
 			try
 			{
@@ -59,5 +59,6 @@ if (isset($_POST['action']))
 			}
 		}
 	}
+	
 }
 ?>

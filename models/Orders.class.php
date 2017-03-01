@@ -7,7 +7,7 @@ class Orders
 	private $price;
 	private $date;
 
-	private $users;
+	private $user;
 	private $products;
 	private $db;
 
@@ -37,11 +37,11 @@ class Orders
 	{
 		return $this->id; 
 	}
-	public function getUsers()
+	public function getUser()
 	{
 		$manager = new UserManager($this->db);
-		$this->users = $manager->findById($this->id_users);
-		return $this->users;
+		$this->user = $manager->findById($this->id_users);
+		return $this->user;
 	}
 	public function getStatus()
 	{
@@ -59,10 +59,10 @@ class Orders
 	// SETTER
 
 	
-	public function setUsers(Users $users)
+	public function setUser(User $user)
 	{
-		$this->users = $users;
-		$this->id_users = $users->getId();  
+		$this->user = $user;
+		$this->id_users = $user->getId();  
 	}
 	public function setStatus($status)
 	{
