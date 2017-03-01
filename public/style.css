@@ -165,3 +165,36 @@ div.panel-body{
     margin: 10px 0px 60px;
     border: 1px solid GREY;
     }
+
+
+
+
+
+    input[type="range"] {
+    position: relative;
+    margin-left: 1em;
+}
+input[type="range"]:after,
+input[type="range"]:before {
+    position: absolute;
+    top: 1em;
+    color: #aaa;
+}
+input[type="range"]:before {
+    left:0em;
+    content: attr(min);
+}
+input[type="range"]:after {
+    right: 0em;
+    content: attr(max);
+}
+
+
+input[type="range"] {
+    display: inline-block;
+    width: 30%;
+}
+
+output {
+    float:right;
+}

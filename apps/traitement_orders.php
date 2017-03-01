@@ -86,6 +86,36 @@ if (isset($_POST['action']))
 			}
 		}
 	}
+
+	if ($action == "v_order")
+	{
+		// Etape 1
+		if (isset($_POST['id_orders'],$_POST['id_products']))
+		{
+			// Etape 2
+			$manager = new OrdersManager($db);
+			$productsManager = new ProductsManager($db);
+			$usersManager = new UsersManager($db);
+			$users = $usersManager->findById($_SESSION['id']);
+			try
+			{
+				$orders = $manager->modify($users);
+				if ($orders)
+				{
+					header('Location: index.php?page=cart');
+					exit;
+				}
+				else
+				{
+					$errors[] = "Erreur interne";
+				}	
+			}
+			catch (Exceptions $e)
+			{
+				$errors = $e->getErrors();
+			}
+		}
+	}
 	
 }
 ?>
