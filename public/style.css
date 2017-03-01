@@ -1,6 +1,10 @@
 * {
     box-sizing: border-box;
 }
+
+.content h2 {
+    font-size: 15px !important;
+}
 body{
     margin-top: 15%;
 }
@@ -149,7 +153,57 @@ div.panel-body{
             width: 15%;
             display: inline-block;
         }
-
         .navbar-nav input {
            margin-top: 10px;
         }
+.coordonnees h2,.coordonnees h4{
+    font-weight: bold;
+}
+.contact h2{
+    font-weight: bold;
+}
+.form-area
+{
+    background-color: #FAFAFA;
+    padding: 10px 40px 60px;
+    margin: 10px 0px 60px;
+    border: 1px solid GREY;
+    }
+
+
+
+
+
+    input[type="range"] {
+    position: relative;
+    margin-left: 1em;
+}
+input[type="range"]:after,
+input[type="range"]:before {
+    position: absolute;
+    top: 1em;
+    color: #aaa;
+}
+input[type="range"]:before {
+    left:0em;
+    content: attr(min);
+}
+input[type="range"]:after {
+    right: 0em;
+    content: attr(max);
+}
+
+
+input[type="range"] {
+    display: inline-block;
+    width: 30%;
+}
+
+output {
+    position: absolute;
+    top: 45%;
+    left: 75%;
+    font-size: 2rem;
+    font-weight: bold;
+    color: DarkBlue;
+}

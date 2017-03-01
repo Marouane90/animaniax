@@ -9,7 +9,10 @@
 		<input type="hidden" name="action" value="add">
 		<input type="hidden" name="id_product" value="<?=htmlentities($product->getId())?>">
 		<button type="submit" class="button btn btn-info">Ajouter au panier</button>
+		<label for="quantity">Quantité</label>
+		<input type="range" id="champ1" value="0" max="<?=htmlentities($product->getQuantity())?>" min="0" step="1" class="quantity" name="quantity">
 	</form>
+
 	<p><?=htmlentities($product->getPrice())?> euros</p>
 	<p style="padding-top:20px;">Il en reste <?=htmlentities($product->getQuantity())?></p>
 

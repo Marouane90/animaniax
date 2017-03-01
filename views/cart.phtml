@@ -1,4 +1,4 @@
-<div>
+<div class="clearfix">
 	<p>
 		<p>Status : <?=htmlentities($cart->getStatus())?></p>
 		<p>Prix : <?=htmlentities($cart->getPrice())?></p>
@@ -6,3 +6,6 @@
 	</p>
 	<?php require('apps/cart_elem.php'); ?>
 </div>		
+	<form  action="v_order" method="POST">
+		<button type="submit" class="btn btn-default">Valider la commande</button>
+	</form>

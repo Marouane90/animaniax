@@ -1,3 +1,10 @@
 <?php
-require('views/footer.phtml');
+if (isset($_SESSION['id']))
+{
+	require('views/footer_in.phtml');
+}
+else
+{
+	require('views/footer.phtml');
+}
 ?>
