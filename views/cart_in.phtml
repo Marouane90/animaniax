@@ -2,6 +2,6 @@
 	<form class="form" method="POST">
 		<button type="submit" class="button btn btn-info">Ajouter au panier</button>
 		<label for="quantity">Quantité</label>
-		<input type="range" id="champ1" value="0" max="<?=htmlentities($product->getQuantity())?>" min="0" step="1" class="quantity" name="quantity">
+		<input type="number" id="quantity" min="0" max="<?=htmlentities($product->getQuantity())?>"  class="quantity" name="quantity">
 	</form>
 </div>
