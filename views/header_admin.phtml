@@ -30,7 +30,8 @@
 				</li>
 				<li class="<?=$page_logout?>"><a href="index.php?page=logout">Se déconnecter</a>
 				</li>
-				<form action="index.php?page=search" method="GET">
+				<form method="GET">
+					<input type="hidden" value="search" name="page">
 					<input type="text" name="search" placeholder="Que recherchez-vous ?"/>
 					<input type="submit" value="Rechercher">
 				</form>
