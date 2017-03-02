@@ -99,25 +99,20 @@ if (isset($_POST['action']))
 	if ($action == "v_order")
 	{
 		// Etape 1
-		if (isset($_POST['id_orders'],$_POST['id_products']))
+		if (isset($_SESSION['id']))
 		{
 			// Etape 2
 			$manager = new OrdersManager($db);
-			$productsManager = new ProductsManager($db);
-			$usersManager = new UsersManager($db);
+			$userManager = new UserManager($db);
+			$user = $userManager->findById($_SESSION['id']);
 			
 			try
 			{
-				$orders = $manager->modify($users);
-				if ($orders)
-				{
-					header('Location: index.php?page=cart');
-					exit;
-				}
-				else
-				{
-					$errors[] = "Erreur interne";
-				}	
+				$cart = $user->getCart();
+				$cart->setStatus("termine");
+				$manager->save($cart);
+				header('Location: index.php?page=orders');
+				exit;
 			}
 			catch (Exceptions $e)
 			{

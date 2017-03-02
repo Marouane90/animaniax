@@ -1,6 +1,6 @@
 <?php
 if (isset($_SESSION['id']))
 {
-require('views/create_comment.phtml');	
+	require ('views/cart_in.phtml');
 }
 ?>

@@ -37,6 +37,18 @@ class OrdersManager
 		}
 		return $list;
 	}
+	public function findByStatus(Orders $orders)
+	{
+		$status = $orders->getStatus();
+		$list = [];
+
+		$res = mysqli_query($this->db, "SELECT * FROM orders WHERE status='termine'");
+		while($order = mysqli_fetch_object($res, "Orders", [$this->db]))
+		{
+			$list[] = $order;
+		}
+		return $list;
+	}
 	public function findCartByUser(User $user)
 	{
 		$id_users = intval($user->getId());
