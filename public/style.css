@@ -168,18 +168,12 @@ div.panel-body{
     padding: 10px 40px 60px;
     margin: 10px 0px 60px;
     border: 1px solid GREY;
-    }
-
-
-
-
-
-    input[type="range"] {
+}
+input[type="range"] {
     position: relative;
     margin-left: 1em;
 }
-input[type="range"]:after,
-input[type="range"]:before {
+input[type="range"]:after, input[type="range"]:before {
     position: absolute;
     top: 1em;
     color: #aaa;
@@ -192,13 +186,10 @@ input[type="range"]:after {
     right: 0em;
     content: attr(max);
 }
-
-
 input[type="range"] {
     display: inline-block;
     width: 30%;
 }
-
 output {
     position: absolute;
     top: 45%;
@@ -206,4 +197,10 @@ output {
     font-size: 2rem;
     font-weight: bold;
     color: DarkBlue;
+}
+body{
+    margin-top: 100px;
+}
+.categories h1{
+    margin-bottom: 50px;
 }
