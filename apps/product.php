@@ -1,12 +1,19 @@
 <?php
 
-	if (isset($_GET['id']))
+if (isset($_GET['id']))
 {
 	$manager = new ProductsManager($db);
 	$product = $manager->findById($_GET['id']);
-	require("views/product.phtml");
+	if ($product == null)
+	{
+		$errors[]="Cette page n'existe pas";
+		require("apps/errors.php");
+	}
+	else
+	{
+		require("views/product.phtml");
+	}
 }
-
 else {
 	echo "erreur";
 }

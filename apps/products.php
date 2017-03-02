@@ -9,7 +9,7 @@ if (isset($_GET['id_category']))
 	}
 	else
 	{
-		$errors[] = "YOLO";
+		$errors[] = "Ce produit n'existe pas";
 		require('views/errors.phtml');
 	}
 }
