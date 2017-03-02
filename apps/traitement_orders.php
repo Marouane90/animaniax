@@ -19,6 +19,7 @@ if (isset($_POST['action']))
 				{
 					$cart = $manager->create($user);
 				}
+		
 				if($product->getQuantity()>=$quantity)
 				{
 					$count=0;

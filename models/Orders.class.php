@@ -24,6 +24,15 @@ class Orders
 		}
 		return $this->products;
 	}
+	public function getProductNbr()
+	{
+		if ($this->products == null)
+		{
+			$manager = new ProductsManager($this->db);
+			$this->products = $manager->findNbrByOrder($this);
+		}
+		return $this->products;
+	}
 	public function addProduct(Products $products)
 	{
 
