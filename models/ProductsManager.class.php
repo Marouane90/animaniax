@@ -54,7 +54,7 @@
 			$picture = mysqli_real_escape_string($this->db, $products->getPicture());
 			$description = mysqli_real_escape_string($this->db, $products->getDescription());
 			$price = floatval($products->getPrice());
-			$quantity = intval($product->getQuantity());
+			$quantity = intval($products->getQuantity());
 			$res = mysqli_query($this->db, "UPDATE products SET id_category='".$id_category."', name='".$name."', picture='".$picture."', description= '".$description."', price='".$price."', quantity= '".$quantity."' WHERE id='".$id."' LIMIT 1");
 
 		}

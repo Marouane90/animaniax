@@ -62,11 +62,15 @@ class OrdersManager
 	{
 		$id = intval($orders->getId());
 		$products = $orders->getProducts();
+		$productManager = new ProductsManager($this->db);
 		mysqli_query($this->db, "DELETE FROM link_orders_products WHERE id_orders='".$id."'");
 		$count = 0;
 		while ($count < count($products))
 		{
-			mysqli_query($this->db, "INSERT INTO link_orders_products (id_orders, id_products) VALUES('".$id."', '".$products[$count]->getId()."')");
+			$product = $products[$count];
+			mysqli_query($this->db, "INSERT INTO link_orders_products (id_orders, id_products) VALUES('".$id."', '".$product->getId()."')");
+			$product->setQuantity($product->getQuantity() - 1);
+			$productManager->save($product);
 			$count++;
 		}
 		$id_users = intval($orders->getUser()->getId());
