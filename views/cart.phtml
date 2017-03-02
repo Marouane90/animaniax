@@ -1,8 +1,7 @@
 <div class="clearfix">
-	<form  action="v_order" method="POST">
-		<input type="hidden" class="status" value="">
-		<input type="hidden" class="price" value="terminé">
-		<input type="hidden" class="date" value="terminé">
+	<form  class="form" method="POST">
+		<input type="hidden" name="action" value="v_order">
+		
 	<p>
 		<p>Status : <?=htmlentities($cart->getStatus())?></p>
 		<p>Prix : <?=htmlentities($cart->getPrice())?></p>

@@ -4,7 +4,8 @@ if (isset($_SESSION['id']))
 	$userManager = new UserManager($db);
 	$user = $userManager->findById($_SESSION['id']);
 	$manager = new OrdersManager($db);
-	$list = $manager->findByUsers($user);
+	$orders =  new Orders($db);
+	$list = $manager->findByStatus($orders);
 	if ($list==0) 
 	{
 		echo "Vous n'avez pas encore passer de commandes";
