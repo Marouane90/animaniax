@@ -8,6 +8,11 @@
 				<span class="icon-bar"></span>
 			</button>
 			<a class="navbar-brand" href="index.php">Animaniax</a>
+			<li class="navbar-right">
+					<a href="index.php?page=cart">
+						<img style="width:30%;" src="public/images/cart.png">
+					</a>
+				</li>
 		</div>
 		<div class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
@@ -23,13 +28,9 @@
 				<li class="<?=$page_profile?> ">
 					<a href="index.php?page=user">Mon profil</a>
 				</li>
-				<li class="<?=$page_logout?>"><a href="index.php?page=logout">Se déconnecter</a></li>
-				<input type="text" name="search" placeholder="Que recherchez-vous ?"/>
-				<li class="navbar-right">
-					<a href="index.php?page=cart">
-						<img style="width:15%;" src="public/images/cart.png">
-					</a>
+				<li class="<?=$page_logout?>"><a href="index.php?page=logout">Se déconnecter</a>
 				</li>
+				<input type="text" name="search" placeholder="Que recherchez-vous ?"/>
 			</ul>
 		</div>
 		<p>Bonjour <strong><?=htmlentities($_SESSION['email'])?></strong>, vous êtes maintenant connecté(e) en tant qu'<strong>admin</strong> !</p>
