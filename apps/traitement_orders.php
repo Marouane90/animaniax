@@ -22,7 +22,7 @@ if (isset($_POST['action']))
 				if($product->getQuantity()>=$quantity)
 				{
 					$count=0;
-					while($count <= $quantity)
+					while($count < $quantity)
 					{
 					$cart->addProduct($product);
 					$count++;

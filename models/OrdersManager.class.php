@@ -37,12 +37,11 @@ class OrdersManager
 		}
 		return $list;
 	}
-	public function findByStatus(Orders $orders)
+	public function findByStatus($status)
 	{
-		$status = $orders->getStatus();
 		$list = [];
-
-		$res = mysqli_query($this->db, "SELECT * FROM orders WHERE status='termine'");
+		$status = mysqli_real_escape_string($this->db, $status);
+		$res = mysqli_query($this->db, "SELECT * FROM orders WHERE status='".$status."'");
 		while($order = mysqli_fetch_object($res, "Orders", [$this->db]))
 		{
 			$list[] = $order;
