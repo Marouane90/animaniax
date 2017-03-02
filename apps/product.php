@@ -1,6 +1,6 @@
 <?php
 
-	if (isset($_GET['id']))
+if (isset($_GET['id']))
 {
 	$manager = new ProductsManager($db);
 	$product = $manager->findById($_GET['id']);
@@ -10,6 +10,17 @@
 else {
 	echo "erreur";
 }
+
+
+if (isset($_SESSION['id']) || isset($_SESSION['admin']))
+{
+
+require('apps/create_comment.php');
+	
+}
+
+require('apps/comments.php'); 
+
 
 
 
