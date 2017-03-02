@@ -1,11 +1,15 @@
 <div class="clearfix">
+	<form  action="v_order" method="POST">
+		<input type="hidden" class="status" value="">
+		<input type="hidden" class="price" value="terminé">
+		<input type="hidden" class="date" value="terminé">
 	<p>
 		<p>Status : <?=htmlentities($cart->getStatus())?></p>
 		<p>Prix : <?=htmlentities($cart->getPrice())?></p>
 		<p>Date : <?=htmlentities($cart->getDate())?></p>
 	</p>
 	<?php require('apps/cart_elem.php'); ?>
-</div>		
-	<form  action="v_order" method="POST">
 		<button type="submit" class="btn btn-default">Valider le panier</button>
 	</form>
+</div>		
+	<!-- 	<input type="hidden" class="action" value="terminé"> -->
