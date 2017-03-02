@@ -8,7 +8,7 @@ if (isset($_SESSION['email']))
 }
 
 else {
-	echo "erreur";
+	echo "Erreur: il faut être connecté pour accéder à cette page.";
 }
 
 

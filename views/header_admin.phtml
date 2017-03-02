@@ -30,7 +30,10 @@
 				</li>
 				<li class="<?=$page_logout?>"><a href="index.php?page=logout">Se déconnecter</a>
 				</li>
-				<input type="text" name="search" placeholder="Que recherchez-vous ?"/>
+				<form action="index.php?page=search" method="GET">
+					<input type="text" name="search" placeholder="Que recherchez-vous ?"/>
+					<input type="submit" value="Rechercher">
+				</form>
 			</ul>
 		</div>
 		<p>Bonjour <strong><?=htmlentities($_SESSION['email'])?></strong>, vous êtes maintenant connecté(e) en tant qu'<strong>admin</strong> !</p>

@@ -17,7 +17,11 @@
 				<li class="<?=$page_register?>">
 					<a href="index.php?page=register">S'enregistrer</a>
 				</li>
-				<input type="text" name="search" placeholder="Que recherchez-vous ?"/>
+				<form method="GET">
+					<input type="hidden" value="search" name="page">
+					<input type="text" name="search" placeholder="Que recherchez-vous ?"/>
+					<input type="submit" value="Rechercher">
+				</form>
 			</ul>
 		</div>
 	</div>
