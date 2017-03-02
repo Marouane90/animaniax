@@ -12,12 +12,6 @@ if (isset($_GET['id']))
 	else
 	{
 		require("views/product.phtml");
-		if (isset($_SESSION['id']))
-		{
-			require('apps/cart_in.php');
-			require('apps/create_comment.php');
-		}
-		require('apps/comments.php'); 
 	}
 }
 else 
