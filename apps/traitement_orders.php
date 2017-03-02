@@ -11,6 +11,7 @@ if (isset($_POST['action']))
 			$productManager = new ProductsManager($db);
 			$product = $productManager->findById($_POST['id_product']);
 			$user = $usersManager->findById($_SESSION['id']);
+			$quantity =intval($_POST['quantity']);
 			$cart = $user->getCart();
 			try
 			{
@@ -18,7 +19,15 @@ if (isset($_POST['action']))
 				{
 					$cart = $manager->create($user);
 				}
-				$cart->addProduct($product);
+				if($product->getQuantity()>=$quantity)
+				{
+					$count=0;
+					while($count <= $quantity)
+					{
+					$cart->addProduct($product);
+					$count++;
+					}
+				}
 				$manager->save($cart);
 				header('Location: index.php?page=cart');
 				exit;
@@ -96,7 +105,7 @@ if (isset($_POST['action']))
 			$manager = new OrdersManager($db);
 			$productsManager = new ProductsManager($db);
 			$usersManager = new UsersManager($db);
-			$users = $usersManager->findById($_SESSION['id']);
+			
 			try
 			{
 				$orders = $manager->modify($users);
