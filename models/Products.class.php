@@ -121,13 +121,9 @@ class Products
 	}
 	public function setQuantity($quantity)
 	{
-		if ($quantity <= 0)
+		if ($quantity < 0)
 		{
 			return "Les quantités ne peuvent pas être négatives";
-		}
-		else if ($quantity == 0)
-		{
-			return "Le produit n'est plus disponible";
 		}
 		else
 		{
