@@ -7,28 +7,24 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="index.php">Animaniax</a>
-			<li class="navbar-right">
-					<a href="index.php?page=cart"><img style="width:40%;" src="public/images/cart.png">
-					</a>
-				</li>
 		</div>
 		<div class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-				<li class="<?=$page_profile?>">
-					<a href="index.php?page=user">Mon profil</a>
-				</li>
-			</ul>
-			<ul class="nav navbar-nav">
-				<li class="dropdown">
-					<li class="<?=$page_logout?>">
-						<a href="index.php?page=logout">Se déconnecter</a>
-					</li>
-					<form method="GET">
+					<li><form method="GET">
+			<a class="navbar-brand" href="index.php">Animaniax</a>
 						<input type="hidden" value="search" name="page">
 						<input type="text" name="search" placeholder="Que recherchez-vous ?"/>
 						<input type="submit" value="Rechercher">
-					</form>
+					</form></li>
+				<li class="<?=$page_profile?>">
+					<a href="index.php?page=user">Mon profil</a>
+				</li>
+				<li class="<?=$page_logout?>">
+						<a href="index.php?page=logout">Se déconnecter</a>
+				</li>
+				<li class="navbar-right">
+					<a href="index.php?page=cart"><img style="width:40%;" src="public/images/cart.png">
+					</a>
 				</li>
 			</ul>
 		</div>
