@@ -4,7 +4,7 @@ $count = 0;
 while ($count < count($list))// list.length
 {
 	$product = $list[$count];
-	require ('views/product_elem.phtml');
+	require ('views/cart_elem.phtml');
 	$count++;
 }
 ?>
