@@ -19,6 +19,17 @@ else {
 }
 
 
+if (isset($_SESSION['id']) || isset($_SESSION['admin']))
+{
+
+require('apps/create_comment.php');
+	
+}
+
+require('apps/comments.php'); 
+
+
+
 
 
 
