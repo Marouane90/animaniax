@@ -231,6 +231,7 @@ body{
       top: -6px;
       transform: rotate(-45deg);
 }
+
 @media screen and (min-width:700px){
     .categories h1
     {
