@@ -1,40 +1,40 @@
 <nav class="navbar navbar-default navbar-fixed-top">
-	<div class="container">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-				<span class="sr-only">Navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<form method="GET">
-				<a class="navbar-brand" href="index.php">Animaniax</a>
-					<input type="hidden" value="search" name="page">
-					<input type="text" name="search" placeholder="Que recherchez-vous ?"/>
-					<input type="submit" value="Rechercher">
-			</form>
-			<li class="navbar-right">
-				<a href="index.php?page=cart">
-						<img style="width:30%;" src="public/images/cart.png">
-				</a>
-			</li>
-		</div>
-		<div class="navbar-collapse collapse">
-			<ul class="nav navbar-nav">
-				<li class="<?=$page_cat?>">
-					<a href="index.php?page=categories">Les catégories</a>
-				</li>
-				<li class="<?=$page_nllecat?>">
-					<a href="index.php?page=create_category">Nouvelle catégorie</a>
-				</li>
-				<li class="<?=$page_nvprod?>">
-					<a href="index.php?page=create_product">Nouveau produit</a>
-				</li>
-				<li class="<?=$page_profile?> ">
-					<a href="index.php?page=user">Mon profil</a>
-				</li>
-				<li class="<?=$page_logout?>"><a href="index.php?page=logout">Se déconnecter</a>
-				</li>
+	<div class="container-fluid">
+		
+		<div style="margin-top:10px;"class="nav">
+			<ul role="navigation" class="nav nav-pills .nav-justified">
+					<li role="presentation" class=""><a class="navbar-brand active" href="index.php">Animaniax</a></li>
+		
+			
+					<li role="presentation" class="<?=$page_cat?>">
+						<a href="index.php?page=categories">Les catégories</a>
+					</li>
+					<li role="presentation" class="<?=$page_nllecat?>">
+						<a href="index.php?page=create_category">Nouvelle catégorie</a>
+					</li>
+					<li role="presentation" class="<?=$page_nvprod?>">
+						<a href="index.php?page=create_product">Nouveau produit</a>
+					</li>
+					<li role="presentation" class="<?=$page_profile?> ">
+						<a href="index.php?page=user">Mon profil</a>
+					</li>
+					<li role="presentation" class="<?=$page_logout?> " ><a href="index.php?page=logout">Se déconnecter</a>
+					</li>
+					<li role="presentation" style="margin-top:0px;"class="">
+						<form class="navbar-form navbar-left search" method="GET">
+							 <div class="form-group">
+								<input type="hidden" value="search" name="page">
+								<input class="form-control" type="text" name="search" placeholder="Que recherchez-vous ?"/>
+								<input class="btn btn-default" type="submit" value="Rechercher">
+							</div>
+						</form>
+					</li>
+					<li role="presentation" class="">
+						<a href="index.php?page=cart">
+								<img style="width:30px;" src="public/images/cart.png">
+						</a>
+					</li>
+					
 			</ul>
 		</div>
 		<p>Bonjour <strong><?=htmlentities($_SESSION['email'])?></strong>, vous êtes maintenant connecté(e) en tant qu'<strong>admin</strong> !</p>

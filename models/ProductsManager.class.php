@@ -22,7 +22,7 @@
 		{
 			$id = intval($order->getId());
 			$list = [];
-			$res = mysqli_query($this->db, "SELECT products.*, COUNT(products.id) AS nbr FROM products LEFT JOIN link_orders_products ON link_orders_products.id_products=products.id WHERE link_orders_products.id_orders='".$id."'");
+			$res = mysqli_query($this->db, "SELECT products.*, COUNT(products.id) AS nbr FROM products LEFT JOIN link_orders_products ON link_orders_products.id_products=products.id WHERE link_orders_products.id_orders='".$id."' GROUP BY products.id");
 			while($products = mysqli_fetch_object($res, "Products", [$this->db]))
 			{
 				$list[] = $products;

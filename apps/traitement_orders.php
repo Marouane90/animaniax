@@ -23,7 +23,12 @@ if (isset($_POST['action']))
 				{
 					if (!$cart)
 					{
+<<<<<<< HEAD
 						$cart = $manager->create($user);
+=======
+						$cart->addProduct($product);
+						$count++;
+>>>>>>> 6a9fa0305ec9a5e4ed378b700e6b23402a00a570
 					}
 			
 					if($product->getQuantity()>=$quantity)

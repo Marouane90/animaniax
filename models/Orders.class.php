@@ -50,7 +50,7 @@ class Orders
 		if ($this->products == null)
 		{
 			$this->getProducts();
-		}	
+		}
 		$this->products[] = $products;
 		$this->price += $products->getPrice();
 	}
