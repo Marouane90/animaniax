@@ -1,13 +1,13 @@
 <?php
 
-if(isset($_POST["id_product"], $_POST["content"], $_SESSION['id']))
+if(isset($_POST["id_product"], $_POST["content"], $_POST["rate"], $_SESSION['id']))
 {
 	// Etape 2
 	$userManager = new UserManager($db);
 	$productManager = new ProductsManager($db);
 	$author = $userManager->findById($_SESSION['id']);
 	$product = $productManager->findById($_POST["id_product"]);
-	$rate = new ProductsManager($db);
+	$rate = intval($_POST['rate']);
 	$manager = new CommentManager($db);
 	try
 	{	
