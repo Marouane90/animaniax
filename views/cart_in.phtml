@@ -1,7 +1,8 @@
 <div class="content">
 	<form class="form" method="POST">
-		<button type="submit" class="button btn btn-info">Ajouter au panier</button>
 		<label for="quantity">Quantité</label>
-		<input type="number" id="quantity" min="0" max="<?=htmlentities($product->getQuantity())?>"  class="quantity" name="quantity">
+		<input type="number" name="quantity" id="quantity" min="0" max="<?=htmlentities($product->getQuantity())?>"  class="quantity" name="quantity">
+		<br>
+		<button type="submit" class="button btn btn-info">Ajouter au panier</button>
 	</form>
 </div>

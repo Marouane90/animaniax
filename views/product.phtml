@@ -8,12 +8,12 @@
 	<form class="form" method="POST">
 		<input type="hidden" name="action" value="add">
 		<input type="hidden" name="id_product" value="<?=htmlentities($product->getId())?>">
+			<?php require('apps/cart_in.php'); ?>
 	
-		<?php require('apps/cart_in.php'); ?>
 	</form>
 
-	<p><?=htmlentities($product->getPrice())?> euros</p>
-	<p style="padding-top:20px;">Il en reste <?=htmlentities($product->getQuantity())?></p>
+	<strong><p><?=htmlentities($product->getPrice())?> euros</p></strong>
+	<strong><p>Il en reste: <?=htmlentities($product->getQuantity())?></p></strong>
 
 
 

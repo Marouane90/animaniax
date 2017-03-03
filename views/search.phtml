@@ -1,4 +1,11 @@
-<ul>
-	<td><?=$product->getName()?></td>
-	<td><img src="<?=$product->getPicture()?>"></td>
-</ul>
+
+<div class="row">
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+       <img src="<?=$product->getPicture()?>">
+      <div class="caption">
+        <h3><?=$product->getName()?></h3>
+      </div>
+    </div>
+  </div>
+</div>
