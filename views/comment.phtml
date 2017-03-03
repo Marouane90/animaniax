@@ -6,17 +6,19 @@
 				<strong>
 					<?=htmlentities($comment->getAuthor()->getEmail())?>
 				</strong> 
+				<div class="star">
 				<?php
 					$i = 1;
 					while($i <= 5)
 					{
 						if($i <= intval($comment->getRate()))
-							echo '<span style="color:red">☆</span>';
+							echo '<span class="starOn">☆</span>';
 						else
-							echo "<span>☆</span>";
+							echo '<span class="starOff">☆</span>';
 							$i++;
 					}
 				?>
+				</div>
 				<span class="text-muted"><?=htmlentities($comment->getDate())?></span>
 			</div>
 			<div class="panel-body">
