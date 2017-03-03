@@ -7,4 +7,5 @@ while ($count < count($list))// list.length
 	require ('views/cart_elem.phtml');
 	$count++;
 }
+
 ?>

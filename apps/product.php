@@ -14,8 +14,6 @@ if (isset($_GET['id']))
 		require("views/product.phtml");
 	}
 }
-else 
-{
-	echo "erreur";
-}
+
+
 ?>

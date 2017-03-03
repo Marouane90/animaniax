@@ -12,30 +12,37 @@ if (isset($_POST['action']))
 			$product = $productManager->findById($_POST['id_product']);
 			$user = $usersManager->findById($_SESSION['id']);
 			$quantity =intval($_POST['quantity']);
-			$cart = $user->getCart();
-			try
+			if ($quantity <= 0)
 			{
-				if (!$cart)
-				{
-					$cart = $manager->create($user);
-				}
-		
-				if($product->getQuantity()>=$quantity)
-				{
-					$count=0;
-					while($count < $quantity)
-					{
-					$cart->addProduct($product);
-					$count++;
-					}
-				}
-				$manager->save($cart);
-				header('Location: index.php?page=cart');
-				exit;
+				$errors[] = 'Sold out';
 			}
-			catch (Exceptions $e)
+			else
 			{
-				$errors = $e->getErrors();
+				$cart = $user->getCart();
+				try
+				{
+					if (!$cart)
+					{
+						$cart = $manager->create($user);
+					}
+			
+					if($product->getQuantity()>=$quantity)
+					{
+						$count=0;
+						while($count < $quantity)
+						{
+						$cart->addProduct($product);
+						$count++;
+						}
+					}
+					$manager->save($cart);
+					header('Location: index.php?page=cart');
+					exit;
+				}
+				catch (Exceptions $e)
+				{
+					$errors = $e->getErrors();
+				}
 			}
 		}
 	}
