@@ -1,33 +1,25 @@
 <nav class="navbar navbar-default navbar-fixed-top">
-	<div class="container">
-		<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					</button>
+	<div class="container-fluid">
 	
-					<a class="navbar-brand active" href="index.php">Animaniax</a>
-		
-		</div>
-				<ul class="nav navbar-nav search">	
-					<li>
+	
+			
+
+		<div style="margin-top:10px;"class="">
+			<ul class="nav nav-pills ">
+					<li role="presentation"class=""><a class="navbar-brand active" href="index.php">Animaniax</a></li>
+				<li role="presentation" class="<?=$page_login?>">
+					<a href="index.php?page=login">Se connecter</a>
+				</li>
+				<li role="presentation" class="<?=$page_register?>">
+					<a href="index.php?page=register">S'enregistrer</a>
+				</li>
+					<li role="presentation" style="margin-top:5px;"class="presentation">
 						<form class="search" method="GET">
 								<input type="hidden" value="search" name="page">
 								<input type="text" name="search" placeholder="Que recherchez-vous ?"/>
 								<input type="submit" value="Rechercher">
 						</form>
 					</li>
-				</ul>		
-
-		<div class="navbar-collapse collapse">
-			<ul class="nav navbar-nav">
-				<li class="<?=$page_login?>">
-					<a href="index.php?page=login">Se connecter</a>
-				</li>
-				<li class="<?=$page_register?>">
-					<a href="index.php?page=register">S'enregistrer</a>
-				</li>
 			</ul>
 		</div>
 	</div>

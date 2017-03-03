@@ -8,7 +8,16 @@
 		<link rel="stylesheet" type="text/css" href="public/css/bootstrap-theme.min.css">
 		<link rel="stylesheet" type="text/css" href="public/style.css">
 		<script type="text/javascript" src="public/script/script.js"></script>
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+ 		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 		<title>Animaniax</title>
+		<script>
+		  $( function() {
+		    $( "#accordion" ).accordion({
+		      collapsible: true
+		    });
+		  } );
+		 </script>
 	</head>
 	<body>
 		<?php require('apps/header.php'); ?>
