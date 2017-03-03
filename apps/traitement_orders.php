@@ -25,8 +25,8 @@ if (isset($_POST['action']))
 					$count=0;
 					while($count < $quantity)
 					{
-					$cart->addProduct($product);
-					$count++;
+						$cart->addProduct($product);
+						$count++;
 					}
 				}
 				$manager->save($cart);
