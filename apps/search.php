@@ -1,4 +1,8 @@
 <?php
+
+// $manager = new Categorymanager;
+// $category = $manager-> findById();
+
 if(isset($_GET['search'])) 
 {   
   $recherche = mysqli_real_escape_string($db, $_GET["search"]);
