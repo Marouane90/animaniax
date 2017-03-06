@@ -1,8 +1,7 @@
 <?php
 class User
 {
-	// liste des propriétés -> privées
-	private $id;			//toujours exactement les mêmes noms des colonnes dans la DB
+	private $id;
 	private $email;
 	private $password;
 	private $name;
@@ -18,8 +17,6 @@ class User
 	{
 		$this->db = $db;
 	}
-
-	// **************************getter*****************************
 
 	public function getCart()
 	{
@@ -59,13 +56,13 @@ class User
 	{
 		return $this->admin;
 	}
-
-
-	// **************************setter********************************
+	public function verifPassword($password)
+	{
+		return password_verify($password, $this->password);
+	}
 
 	public function setEmail($email)
 	{
-		// $errors[] = "Email invalide";
 		if (filter_var($email, FILTER_VALIDATE_EMAIL) == true)
 		{
 			$this->email = $email;
@@ -75,7 +72,7 @@ class User
 			return "L'adresse email est invalide.";
 		}
 	}
-	public function setPassword($password)
+	public function updatePassword($password, $old_password)
 	{
 		if (strlen($password) > 63)
 		{
@@ -85,9 +82,36 @@ class User
 		{
 			return "Mot de passe trop court (< 6)";
 		}
+		else if (!$this->verifPassword($old_password))
+		{
+			return "L'ancien mot de passe est invalide";
+		}
 		else
 		{
-			$this->password = $password;
+			$this->password = password_hash($password, PASSWORD_BCRYPT, ["cost"=>11]);
+		}
+	}
+	public function initPassword($password1, $password2)
+	{
+		if (strlen($password1) > 63)
+		{
+			return "Mot de passe trop long (> 63)";
+		}
+		else if (strlen($password1) < 6)
+		{
+			return "Mot de passe trop court (< 6)";
+		}
+		else if ($password1 != $password2)
+		{
+			return "Les mots de passe ne correspondent pas";
+		}
+		else if ($this->password != null)
+		{
+			return "Vous ne pouvez pas initialiser un mot de passe deja existant";
+		}
+		else
+		{
+			$this->password = password_hash($password1, PASSWORD_BCRYPT, ["cost"=>11]);
 		}
 	}
 	public function setName($name)
@@ -137,14 +161,14 @@ class User
 	}
 	public function setBirthdate($birthdate)
 	{
-		$birthdate = str_replace('/', '-', $birthdate); //format de la date entrée
+		$birthdate = str_replace('/', '-', $birthdate);
 		$birthdate = str_replace('.', '-', $birthdate);
 		$birthdate = str_replace(' ', '-', $birthdate);
 		if($birthdate == '')
 		{
 			return "Date invalide";
 		}
-		$tab = explode('-', $birthdate); // format ["2017", "02", "22"]
+		$tab = explode('-', $birthdate);
 		if (isset($tab[0], $tab[1], $tab[2]))
 		{
 			$month = $tab[1];

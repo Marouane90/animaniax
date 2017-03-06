@@ -7,34 +7,34 @@ class UserManager
 	{
 		$this->db = $db;
 	}
-	// SELECT
+	
 	public function findAll()
 	{
 		$list = [];
 		$res = mysqli_query($this->db, "SELECT * FROM users ORDER BY login");
-		while ($user = mysqli_fetch_object($res, "User", [$this->db])) // $user = new User();
+		while ($user = mysqli_fetch_object($res, "User", [$this->db])) 
 		{
 			$list[] = $user;
 		}
 		return $list;
 	}
-	public function findById($id) //function obligatoire findBy()
+	public function findById($id)
 	{
-		$id=intval($id); // /!\ hyper important pour la sécurité, ne pas l'oublier /!\
+		$id=intval($id); 
 		$res = mysqli_query($this->db, "SELECT * FROM users WHERE id='".$id."' LIMIT 1");
-		$user = mysqli_fetch_object($res, "User", [$this->db]); // $user = new User();
+		$user = mysqli_fetch_object($res, "User", [$this->db]); 
 		return $user;
 	}
 	
-	public function findByEmail($email) 
+	public function findByEmail($email)
 	{
-		$email=mysqli_real_escape_string($this->db, $email); // /!\ hyper important pour la sécurité, ne pas l'oublier /!\
+		$email=mysqli_real_escape_string($this->db, $email); 
 		$res = mysqli_query($this->db, "SELECT * FROM users WHERE email='".$email."' LIMIT 1");
-		$user = mysqli_fetch_object($res, "User", [$this->db]); // $user = new User();
+		$user = mysqli_fetch_object($res, "User", [$this->db]); 
 		return $user;
 	}
-	// UPDATE
-	public function save(User $user) //type hinting:pour forcer la class User, avec la propriété $user
+	
+	public function save(User $user)
 	{
 		$id = intval($user->getId());
 		$email = mysqli_real_escape_string($this->db, $user->getEmail());
@@ -45,64 +45,47 @@ class UserManager
 		$birthdate = mysqli_real_escape_string($this->db, $user->getBirthdate());
 		$admin = (boolean)$user->isAdmin();
 		$res = mysqli_query($this->db, "UPDATE users SET email='".$email."', password='".$password."', name='".$name."', address='".$address."', city='".$city."', birthdate='".$birthdate."', admin='".$admin."' WHERE id='".$id."' LIMIT 1");
-		if (!$res) //$res=false
+		if (!$res) 
 		{
 			throw new Exceptions(["Erreur interne"]);
 		}
 		return $this->findById($id);
 	}
-	// DELETE
+	
 	public function remove(User $user)
 	{
 		$id = intval($user->getId());
 		$res = mysqli_query($this->db, "DELETE from users WHERE id='".$id."' LIMIT 1");
 		return $user;
 	}
-	// INSERT INTO
+	
 	public function create($email, $password1, $password2, $name, $address, $city, $birthdate)
 	{
 		$errors = [];
 		$user = new User($this->db);
-		$error = $user->setEmail($email);
-		if($error)
-		{
+		if (($error = $user->setEmail($_POST['email'])))
 			$errors[] = $error;
-		}
-		$error = $user->setPassword($password1);
-		if($error)
-		{
+		if (($error = $user->setName($_POST['name'])))
 			$errors[] = $error;
-		}
-		$error = $user->setName($name);
-		if($error)
-		{
+		if (($error = $user->setAddress($_POST['address'])))
 			$errors[] = $error;
-		}
-		$error = $user->setAddress($address);
-		if($error)
-		{
+		if (($error = $user->setCity($_POST['city'])))
 			$errors[] = $error;
-		}
-		$error = $user->setCity($city);
-		if($error)
-		{
+		if (($error = $user->setBirthdate($birthdate)))
 			$errors[] = $error;
-		}
-		$error = $user->setBirthdate($birthdate);
-		if($error)
-		{
+		if (($error = $user->initPassword($_POST['password1'], $_POST['password2'])))
 			$errors[] = $error;
-		}
 		if(count($errors) != 0)
 		{
 			throw new Exceptions($errors);
 		}
-		$email = mysqli_real_escape_string($this->db, $email);
-		$hash = password_hash($password1, PASSWORD_BCRYPT, ["cost"=>11]);
-		$name = mysqli_real_escape_string($this->db, $name);
-		$address = mysqli_real_escape_string($this->db, $address);
-		$city = mysqli_real_escape_string($this->db, $city);
-		$birthdate = mysqli_real_escape_string($this->db, $birthdate);
+		$email = mysqli_real_escape_string($this->db, $user->getEmail());
+		$hash = mysqli_real_escape_string($this->db, $user->getPassword());
+		$name = mysqli_real_escape_string($this->db, $user->getName());
+		$address = mysqli_real_escape_string($this->db, $user->getAddress());
+		// $city = mysqli_real_escape_string($this->db, $city);
+		$city = mysqli_real_escape_string($this->db, $user->getCity());
+		$birthdate = mysqli_real_escape_string($this->db, $user->getBirthdate());
 		$res = mysqli_query($this->db, "INSERT INTO users (email, password, name, address, city, birthdate) VALUES('".$email."', '".$hash."', '".$name."', '".$address."', '".$city."', '".$birthdate."')");
 		if (!$res)
 		{
