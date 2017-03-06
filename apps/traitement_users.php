@@ -55,22 +55,16 @@ if (isset($_POST["action"]))
 				$user = $manager->findByEmail($_POST['email']);
 				if ($user)
 				{
-					// if (password_verify($_POST['password'], $user->getPassword()))
 					if ($user->verifPassword($_POST['password']))
 					{
 						$_SESSION['id'] = $user->getId();
 						$_SESSION['email'] = $user->getEmail();
 						$_SESSION['admin'] = $user->isAdmin();
-<<<<<<< HEAD
 						if (isset($_POST['ref']))
 							header('Location: '.$_POST['ref']);
 						else
 							header('Location: index.php?page=categories');
-=======
-						header('Location: index.php?page=categories');
->>>>>>> c575261d56ffab214bdec019b6b70a8aaf42ea33
 						exit;
-						// Etape 4
 					}
 					else
 					{
