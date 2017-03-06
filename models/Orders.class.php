@@ -26,7 +26,7 @@ class Orders
 	}
 	public function getProductNbr()
 	{
-		if ($this->products == null)
+		if ($this->products === null)
 		{
 			$manager = new ProductsManager($this->db);
 			$this->products = $manager->findNbrByOrder($this);
@@ -35,24 +35,35 @@ class Orders
 	}
 	public function addProduct(Products $products)
 	{
-
-		// if ($this->)
-		// {
-			
-		// }
-
-		// if ($product->getQuantity() > 0)
-		// {
-
-		// }
-		// $quantity > 0
-		// if $product->getQuantity() > 0
-		if ($this->products == null)
+		if ($this->products === null)
 		{
 			$this->getProducts();
 		}
 		$this->products[] = $products;
 		$this->price += $products->getPrice();
+	}
+	public function removeProduct(Products $product)
+	{
+		if ($this->products === null)
+		{
+			$this->getProducts();
+		}
+		$list = [];
+		foreach ($this->products AS $product_in)
+		{
+			if ($product_in->getId() == $product->getId())
+			{
+				// modifier le prix
+				$this->price -= $product_in->getPrice();
+				// modifier les stocks
+				// $product_in->setQuantity($product_in->getQuantity() + 1);
+			}
+			else
+			{
+				$list[] = $product_in;
+			}
+		}
+		$this->products = $list;
 	}
 
 	public function getId()

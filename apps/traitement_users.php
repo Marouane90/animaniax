@@ -1,8 +1,4 @@
-<?php 
-
-// Etape 0 : pendant le développement on laisse le var_dump
-// var_dump($_POST);
-
+<?php
 if (isset($_GET["page"]) && $_GET["page"] == "logout")
 {
 	session_destroy();
@@ -14,53 +10,65 @@ if (isset($_POST["action"]))
 	$action = $_POST["action"];
 	if ($action == "register")
 	{
-		// Etape 1 : Vérification de la présence des variables "name" dans $_POST (ou $_GET)
-		if(isset($_POST["email"], $_POST["password1"], $_POST["password2"], $_POST["name"], $_POST["address"], $_POST["city"], $_POST["birthdate"])) //correspond aux name dans l'input de phtml
+		if(isset($_POST["email"], $_POST["password1"], $_POST["password2"], $_POST["name"], $_POST["address"], $_POST["city"], $_POST["birthdate"])) 
 		{
-			// Etape 2 : Validation des données
 			$manager = new UserManager($db);
 			try
 			{
 				$user = $manager->create($_POST['email'], $_POST['password1'], $_POST['password2'], $_POST['name'], $_POST["address"], $_POST["city"], $_POST['birthdate']);
 				if ($user)
 				{
-					// Etape 4
 					header('Location: index.php?page=login');
 					exit;
 				}
 				else
 				{
-					$errors[] = "Erreur interne1";
+					$user1 = $manager->findByEmail($_POST['email']);
+					$user2 = $manager->findByName($_POST['name']);
+					if ($user1)
+					{
+						$errors[] = "Email deja existant";
+					}
+					else if ($user2)
+					{
+						$errors[] = "Nom deja existant";
+					}
+					else
+					{
+						$errors[] = "Erreur interne";
+					}
 				}
 			}
-			catch (Exceptions $e)// ExceptionS
+			catch (Exceptions $e)
 			{
-				$errors = $e->getErrors();// ->getMessage() => ->getErrors()
+				$errors = $e->getErrors();
 			}
 		}
 	}
-
-	if ($action == "login")
+	else if ($action == "login")
 	{
-		// Etape 1
-		if (isset($_POST["email"], $_POST["password"])) //correspond aux name dans l'input de phtml dans les [] de POST
+		if (isset($_POST["email"], $_POST["password"]))
 		{
-			// Etape 2
 			$manager = new UserManager($db);
 			try
 			{
 				$user = $manager->findByEmail($_POST['email']);
 				if ($user)
 				{
-					if (password_verify($_POST['password'], $user->getPassword()))
+					// if (password_verify($_POST['password'], $user->getPassword()))
+					if ($user->verifPassword($_POST['password']))
 					{
 						$_SESSION['id'] = $user->getId();
 						$_SESSION['email'] = $user->getEmail();
 						$_SESSION['admin'] = $user->isAdmin();
+<<<<<<< HEAD
 						if (isset($_POST['ref']))
 							header('Location: '.$_POST['ref']);
 						else
 							header('Location: index.php?page=categories');
+=======
+						header('Location: index.php?page=categories');
+>>>>>>> c575261d56ffab214bdec019b6b70a8aaf42ea33
 						exit;
 						// Etape 4
 					}
@@ -74,9 +82,55 @@ if (isset($_POST["action"]))
 					$errors[] = "Email inconnu";
 				}
 			}
-			catch (Exceptions $e)// ExceptionS
+			catch (Exceptions $e)
 			{
-				$errors = $e->getErrors();// ->getMessage() => ->getErrors()
+				$errors = $e->getErrors();
+			}
+		}
+	}
+	else if ($action == "update")
+	{
+		if (isset($_SESSION['id'], $_POST["email"], $_POST["password"], $_POST["name"], $_POST["address"], $_POST["city"], $_POST["old_password"]))
+		{
+			$manager = new UserManager($db);
+			try
+			{
+				$user = $manager->findById($_SESSION['id']);
+				if ($user)
+				{
+					if ($user->verifPassword($_POST['old_password']))
+					{
+						if (($error = $user->setEmail($_POST['email'])))
+							$errors[] = $error;
+						if (($error = $user->updatePassword($_POST['password'], $_POST['old_password'])))
+							$errors[] = $error;
+						if (($error = $user->setName($_POST['name'])))
+							$errors[] = $error;
+						if (($error = $user->setAddress($_POST['address'])))
+							$errors[] = $error;
+						if (($error = $user->setCity($_POST['city'])))
+							$errors[] = $error;
+						if (count($errors) == 0)
+						{
+							$manager->save($user);
+							$_SESSION['email'] = $user->getEmail();
+							header('Location: index.php?page=user');
+							exit;
+						}
+					}
+					else
+					{
+						$errors[] = "Mot de passe incorrect";
+					}
+				}
+				else
+				{
+					$errors[] = "Utilisateur inconnu";
+				}
+			}
+			catch (Exceptions $e)
+			{
+				$errors = $e->getErrors();
 			}
 		}
 	}

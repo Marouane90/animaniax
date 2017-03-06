@@ -63,6 +63,12 @@ class OrdersManager
 		$id = intval($orders->getId());
 		$products = $orders->getProducts();
 		$productManager = new ProductsManager($this->db);
+		$old_list = $productManager->findNbrByOrder($orders);
+		foreach ($old_list AS $product)
+		{
+			$product->setQuantity($product->getQuantity() + $product->nbr);
+			$productManager->save($product);
+		}
 		mysqli_query($this->db, "DELETE FROM link_orders_products WHERE id_orders='".$id."'");
 		$count = 0;
 		while ($count < count($products))
