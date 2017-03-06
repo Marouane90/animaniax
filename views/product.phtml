@@ -5,13 +5,7 @@
 		<img class=" pull-left thumbnail" style="width:20%; margin-right:30px;" src="<?=htmlentities($product->getPicture())?>" alt="chat">
 	
 	<h2><?=htmlentities($product->getDescription())?></h2>
-	<form class="form" method="POST">
-		<input type="hidden" name="action" value="add">
-		<input type="hidden" name="id_product" value="<?=htmlentities($product->getId())?>">
-			<?php require('apps/cart_in.php'); ?>
 	
-	</form>
-
 	<strong><p><?=htmlentities($product->getPrice())?> euros</p></strong>
 	<strong><p>Il en reste: <?=htmlentities($product->getQuantity())?></p></strong>
 
