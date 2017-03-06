@@ -57,9 +57,12 @@ if (isset($_POST["action"]))
 						$_SESSION['id'] = $user->getId();
 						$_SESSION['email'] = $user->getEmail();
 						$_SESSION['admin'] = $user->isAdmin();
-						// Etape 4
-						header('Location: index.php?page=categories');
+						if (isset($_POST['ref']))
+							header('Location: '.$_POST['ref']);
+						else
+							header('Location: index.php?page=categories');
 						exit;
+						// Etape 4
 					}
 					else
 					{

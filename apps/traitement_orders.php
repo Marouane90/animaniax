@@ -74,19 +74,22 @@ if (isset($_POST['action']))
 			}
 		}
 	}
-	if ($action == "modify")
+	if ($action == "delete")
 	{
 		// Etape 1
-		if (isset($_POST['id_orders'],$_POST['id_products']))
+		if (isset($_POST['id_product'],$_SESSION['id']))
 		{
 			// Etape 2
 			$manager = new OrdersManager($db);
 			$productsManager = new ProductsManager($db);
-			$usersManager = new UsersManager($db);
+			$userManager = new UserManager($db);
+			$product = $productsManager->findById($_POST['id_product']);
 			$users = $usersManager->findById($_SESSION['id']);
+			$cart = $user->getCart();
 			try
 			{
-				$orders = $manager->modify($users);
+				$cart->remove($product);
+				$manager->save($cart);
 				if ($orders)
 				{
 					header('Location: index.php?page=cart');
